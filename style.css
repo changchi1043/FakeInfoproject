@@ -1,0 +1,509 @@
+ body,
+ html {
+     margin: 0;
+     padding: 0;
+     font-family: "Microsoft JhengHei", sans-serif;
+     background: linear-gradient(to bottom,
+             #D2B48C,
+             /* 淺咖啡/淡棕 */
+             #A67B5B,
+             /* 拿鐵色 */
+             #6F4E37,
+             /* 經典咖啡 */
+             #3C2A21,
+             /* 深焦糖 */
+             #1A0F0A
+             /* 近乎黑的深咖 */
+         );
+     color: #fff;
+     /* 白字 */
+     scroll-behavior: smooth;
+ }
+
+ /* 導覽列 */
+ nav {
+     display: flex;
+     justify-content: center;
+     background-color: #A67B5B;
+     padding: 15px 0;
+     position: sticky;
+     top: 0;
+     z-index: 1000;
+     border-bottom: 1px solid #333;
+ }
+
+ nav a {
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+     color: white;
+     text-decoration: none;
+     margin: 0 10px;
+     /* 稍微縮小間距，因為 padding 會佔空間 */
+     font-weight: bold;
+     font-size: 1.2rem;
+     /* 你剛才調整的大小 */
+     transition: 0.3s;
+     cursor: pointer;
+
+     /* --- 關鍵新增部分 --- */
+     padding: 8px 16px;
+     /* 增加文字周圍的空間 */
+     border-radius: 50px;
+     /* 這裡設大一點，就會變成完美的圓角橢圓框 */
+     display: inline-block;
+     /* 確保 padding 和圓角能正常顯示 */
+ }
+
+ nav a:hover {
+     /* 滑過時文字保持白色（或改為咖啡色），背景變色 */
+     background-color: #F5F5DC;
+     /* 這裡換成你喜歡的顏色，例如米色 */
+     color: #570505;
+     /* 讓文字變深，在亮色背景上才清晰 */
+ }
+
+ /* 容器與區塊 */
+ .container {
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 50px 20px;
+     text-align: center;
+     min-height: 80vh;
+ }
+
+ section {
+     display: none;
+     /* 預設隱藏所有區塊 */
+ }
+
+ section.active {
+     display: block;
+     /* 顯示目前啟用的區塊 */
+ }
+
+ footer {
+     text-align: center;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+     padding: 30px;
+     background: #1A0F0A;
+     color: #ffffff;
+ }
+
+ /*主頁標題動畫部分*/
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+         transform: translateY(20px);
+         /* 稍微由下往上移動，會更有律動感 */
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+
+
+
+ h1 {
+     font-size: 10rem;
+     letter-spacing: 5px;
+     margin-bottom: 30px;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+     animation: fadeIn 2s ease-out;
+ }
+
+
+
+
+ p {
+     font-size: 1.2rem;
+     line-height: 1.6;
+     color: #ffffff;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+ }
+
+ /* 按鈕樣式 */
+ .btn {
+     background-color: transparent;
+     color: white;
+     border: 2px solid white;
+     padding: 12px 30px;
+     font-size: 1.2rem;
+     cursor: pointer;
+     transition: 0.3s;
+     margin-top: 30px;
+     text-transform: uppercase;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+ }
+
+ .btn:hover {
+     background-color: white;
+     color: #494534;
+ }
+
+ /* 測驗題目樣式 */
+
+ .progress-bar {
+     font-size: 1.7rem;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+     font-weight: bold;
+     color: #570505;
+     margin-bottom: 20px;
+ }
+
+ .question-text {
+     font-size: 10rem;
+     /* 放大字體，建議 1.3rem ~ 1.5rem 之間 */
+     line-height: 1.8;
+     /* 增加行高，讓兩行文字之間不會太擠 */
+     font-weight: bold;
+     /* 設為粗體，讓它更像「題目」 */
+     color: #FFFFFF;
+     /* 改為純白或米色 (#F5F5DC)，在深色背景更清晰 */
+     text-align: center;
+     /* 居中對齊 */
+     margin: 20px auto;
+     /* 增加上下間距 */
+     max-width: 80%;
+     /* 限制寬度，避免文字貼到邊緣，比較好閱讀 */
+ }
+
+ .quiz-option {
+     font-size: 1.2rem;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+     display: block;
+     width: 100%;
+     padding: 15px;
+     margin: 10px 0;
+     background: #ffffff;
+     border: 1px solid #F5F5DC;
+     color: #4E342E;
+     text-align: left;
+     cursor: pointer;
+ }
+
+ .quiz-option:hover {
+     background: #F5F5DC;
+ }
+
+
+
+ /* AI 聊天介面框架 */
+ .chat-container {
+     border: 1px solid #333;
+     height: 400px;
+     display: flex;
+     flex-direction: column;
+     background: #4E342E;
+     border-radius: 8px;
+     overflow: hidden;
+     text-align: left;
+ }
+
+ .chat-messages {
+     flex: 1;
+     padding: 20px;
+     overflow-y: auto;
+ }
+
+ .message {
+     padding: 12px 18px;
+     margin-bottom: 15px;
+     border-radius: 15px;
+     font-family: "標楷體", "DFKai-SB", serif;
+     max-width: 85%;
+     line-height: 1.6;
+     display: block;
+     clear: both;
+ }
+
+ .bot {
+     background-color: #3E2723;
+     color: #F5F5DC;
+     border-left: 5px solid #D4AF37;
+     /* 金色邊條強調權威感 */
+     float: left;
+     border-bottom-left-radius: 2px;
+ }
+
+ .user {
+     background-color: #FFF8E1;
+     /* 焦糖橘 */
+     color: #3E2723;
+     float: right;
+     border-bottom-right-radius: 2px;
+     text-align: left;
+     /* 文字維持左對齊 */
+ }
+
+ .chat-input {
+     border-top: 1px solid #494534;
+     padding: 15px;
+     display: flex;
+ }
+
+ .chat-input input {
+     flex: 1;
+     background: #FFF8E1;
+     border: none;
+     color: rgb(158, 4, 4);
+     padding: 10px;
+     border-radius: 5px;
+ }
+
+
+
+ .message {
+     opacity: 0;
+     transform: translateY(10px);
+ }
+
+ /* 修正第一句：讓它載入時自動執行動畫 */
+ .msg-1 {
+     /* 這裡直接寫死動畫，不依賴 JS 的 .show */
+     animation: messageFadeIn 0.8s ease-out 0.5s forwards !important;
+ }
+
+ @keyframes messageFadeIn {
+     from {
+         opacity: 0;
+         transform: translateY(10px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+
+ /* 後續訊息：預設隱藏，不設定動畫，改用 transition */
+ .msg-2,
+ .msg-3,
+ .msg-4 {
+     opacity: 0;
+     transform: translateY(10px);
+     transition: opacity 0.5s ease, transform 0.5s ease;
+ }
+
+ /* 當 JS 加入 .show 時顯示 */
+
+ .show {
+     opacity: 1 !important;
+     transform: translateY(0) !important;
+ }
+
+ /* 第四句閃爍特效：當 .show 存在時才啟動動畫 */
+ /* 1. 確保 msg-4 的基礎狀態 */
+ .msg-4 {
+     opacity: 0;
+     transform: translateY(10px);
+     transition: opacity 0.5s ease, transform 0.5s ease;
+     color: #FFD700;
+     /* 亮金色 */
+     font-weight: bold;
+ }
+
+ /* 2. 當 JavaScript 加入 .show 時，同時啟動出現動畫與閃爍動畫 */
+ .msg-4.show {
+     opacity: 1 !important;
+     transform: translateY(0) !important;
+     color: #FFD700;
+     font-weight: bold;
+     /* 這裡確保動畫被啟動 */
+     animation: pulse 2s infinite ease-in-out;
+ }
+
+ /*檢查你的脈衝動畫定義是否存在 */
+ @keyframes pulse {
+     0% {
+         opacity: 1;
+         text-shadow: 0 0 10px #FF8C00, 0 0 20px #ffffff;
+     }
+
+     50% {
+         opacity: 0.5;
+         text-shadow: 0 0 2px #FF8C00;
+     }
+
+     100% {
+         opacity: 1;
+         text-shadow: 0 0 10px #FF8C00, 0 0 20px #ffffff;
+     }
+ }
+
+
+ /* 內容區塊標題 */
+ .content-title {
+     font-size: 5rem;
+     margin-bottom: 20px;
+     border-bottom: 2px solid #ffffff;
+     display: inline-block;
+     padding-bottom: 10px;
+     letter-spacing: 5px;
+     margin-bottom: 30px;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+ }
+
+
+
+ #intro-info p strong {
+     font-size: 1.7rem;
+     display: inline-block;
+     /* 讓字體間距更好控制 */
+     padding-bottom: 5px;
+     color: #3E2723;
+ }
+
+
+
+
+ .definition-text {
+     text-align: left;
+     margin-bottom: 40px;
+     padding-left: 10px;
+     border-left: 5px solid #6F4E37;
+     /* 加一個咖啡色邊條增加設計感 */
+ }
+
+ /* 圖文框容器：使用 Flex 讓三個框並排 */
+ .card-container {
+     display: flex;
+     justify-content: space-between;
+     /* 均勻分配空間 */
+     gap: 20px;
+     /* 框與框之間的間距 */
+ }
+
+ /* 單個圖文框樣式 */
+ .card {
+     flex: 1;
+     background: #FFF8E1;
+     border: 1px solid #ddd;
+     border-radius: 10px;
+     padding: 15px;
+     text-align: center;
+
+     /* 修改文字顏色 */
+     color: #3E2723;
+
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ }
+
+ .card p {
+     /* 假設你想用稍微暖一點的咖啡色 */
+     color: #5D4037;
+     font-size: 1rem;
+     margin-top: 10px;
+     font-family: "標楷體", serif;
+ }
+
+
+ /* 圖片放置區 */
+ .image-box {
+     width: 100%;
+     height: 200px;
+     background-color: #f6f5f5;
+     /* 沒圖片時顯示灰色 */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 5px;
+     margin-bottom: 15px;
+     overflow: hidden;
+ }
+
+ /* 如果有圖片，讓它填滿框框 */
+ .image-box img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+
+
+ 
+ /* --- 關於我們區塊敘述 --- */
+ .about-desc {
+     text-align: center;
+     color: #F5F5DC;
+     margin-bottom: 60px;
+     font-family: "標楷體", serif;
+ }
+
+ /* --- 每一排的通用設定 --- */
+ .team-row {
+     display: flex;
+     justify-content: center;
+     gap: 30px;
+     margin-bottom: 20px;
+     flex-wrap: wrap;
+ }
+
+ /* --- 卡片基礎設定 (加入 #about 確保不影響其他頁面) --- */
+ #about .card {
+     position: relative;
+     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+     z-index: 1;
+     cursor: pointer;
+     flex: 1 1 200px;
+     /* 確保卡片有基礎寬度 */
+     max-width: 250px;
+ }
+
+ /* --- 被點擊後的啟動狀態 (修正後的部分) --- */
+ #about .card.active {
+     transform: scale(1.08);
+     /* 確定是放大 */
+     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25) !important;
+     z-index: 100;
+ }
+
+ /* --- 介紹區塊初始狀態 --- */
+ #about .member-intro {
+     background-color: #F5F5DC;
+     color: #570505;
+     font-size: 0.9rem;
+     padding: 0 15px;
+     border-radius: 0 0 10px 10px;
+     border-top: 1px dashed #A67B5B;
+
+     /* 動效控制 */
+     height: 0;
+     opacity: 0;
+     overflow: hidden;
+     transition: all 0.5s ease;
+     margin-top: 15px;
+ }
+
+ /* --- 點擊後展開介紹區塊 --- */
+ #about .card.active .member-intro {
+     height: 20px;
+     /* 這裡的高度依簡介內容長度調整 */
+     opacity: 1;
+     padding: 15px;
+     background-color: white;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+ }
+
+ /* --- 第二排特殊對齊 --- */
+ .row-2 {
+     max-width: 600px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ /* --- 組員姓名與圖片 --- */
+ .member-name {
+     font-weight: bold;
+     font-size: 1.2rem;
+     color: #3E2723;
+     margin-top: 10px;
+ }
+
+ .image-box img {
+     width: 100%;
+     height: 200px;
+     object-fit: cover;
+     border-radius: 8px;
+ }

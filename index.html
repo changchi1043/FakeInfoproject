@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>風向文研究室</title>
+
+</head>
+
+<body>
+
+    <!-- 導覽列 -->
+    <nav>
+        <a onclick="showSection('home')">首頁</a>
+        <a onclick="showSection('intro-info')">風向文介紹</a>
+        <a onclick="showSection('technique')">常見手法</a>
+        <a onclick="showSection('ai-zone')">AI解答區</a>
+        <a onclick="showSection('about')">關於我們</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- 主頁 -->
+        <section id="home" class="active">
+            <h1>風向文<br>研究室</h1>
+
+            <button class="btn" onclick="showSection('quiz-intro')">點我進入測驗❤️</button>
+        </section>
+
+        <!-- 心理測驗簡介 -->
+        <section id="quiz-intro">
+            <h2 class="content-title">風向文判斷力測驗<br></h2>
+            <p>準備好測試你的判斷力了嗎⏱︎<br>
+                透過 10 個情境題，看看你面對網路風向文的反應如何。<br>
+                依照直覺回答，完成後會顯示你的等級囉~</p>
+            <button class="btn" onclick="startQuiz()">測驗開始</button>
+        </section>
+
+        <!-- 測驗題目區 -->
+        <section id="quiz-game">
+            <div class="progress-bar">問題 <span id="current-q-num">1</span> / 10</div>
+            <h3 id="question-text">題目載入中...</h3>
+            <div id="options-container">
+                <!-- 選項會由 JS 動態生成 -->
+            </div>
+        </section>
+
+        <!-- 測驗結果頁 -->
+        <section id="quiz-result">
+            <h2 class="content-title">測驗結果</h2>
+            <p id="result-text">正在計算結果...</p>
+            <button class="btn" onclick="showSection('home')">回到主頁</button>
+        </section>
+
+        <!-- 其他分頁：風向文介紹 -->
+        <section id="intro-info">
+            <h2 class="content-title">風向文介紹</h2>
+
+            <div class="definition-text">
+                <p><strong>定義</strong></p>
+                <p>是常見於現代社群軟體中的流行用語，指有心人士刻意製造、引導特定的輿論方向，試圖影響大眾的想法。通常在事件發生初期，前幾個推噓文的態度會成為關鍵，引導後續留言跟風，常見於行銷操作、公共議題爭議或網軍攻防。
+                </p>
+            </div>
+
+            <div class="card-container">
+                <div class="card">
+                    <div class="image-box">
+                        <img src="thread.jpg">
+                    </div>
+                    <p>社群流行趨勢</p>
+                </div>
+                <div class="card">
+                    <div class="image-box">
+                        <img src="new.jpg">
+                    </div>
+                    <p>焦點新聞</p>
+                </div>
+                <div class="card">
+                    <div class="image-box">
+                        <img src="ptt.jpg">
+                    </div>
+                    <p>批踢踢論壇網</p>
+                </div>
+            </div>
+
+            <h2 class="content-title">短影片介紹</h2>
+            <div class="video-container" style="text-align: center; margin-top: 30px;">
+                <video controls
+                    style="width: 100%; max-width: 400px; border-radius: 15px; border: 2px solid #fd9a31; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+                <p></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 其他分頁：常見手法 -->
+        <section id="technique">
+            <h2 class="content-title">風向文常見手法</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li>1. 斷章取義：只截取部分事實。</li>
+                <li>2. 情緒勒索：使用激進詞彙激發憤怒。</li>
+                <li>3. 假裝中立：以路人視角進行評論。</li>
+            </ul>
+        </section>
+
+        <!-- 其他分頁：AI風向文解答區 -->
+        <section id="ai-zone">
+            <h2 class="content-title">AI 風向文解答區</h2>
+            <p>貼上你懷疑的文章，讓我來為你分析吧</p>
+            <div class="chat-container">
+                <div class="chat-messages">
+                    <div class="message bot msg-1">你好! 我是風向文AI小助手 把你想檢查的文章丟給我看看吧~</div>
+                    <div class="message user msg-2">小助手你好 我想分析這篇文章</div>
+                    <div class="message user msg-3">
+                        «Threads 熱門趨勢篇 ⁉️»
+                        某大勢女團成員親哥哥遭週刊爆料, 妻子指控家暴及強迫性行為, 隨後妻公開傷勢照片，目前正在網路上瘋傳
+                        此外哥哥也被另被指控私下與女直播主有不良交易，對話內容也全曝光，詳細內容請繼續往下閱讀......</div>
+
+                    <div class="message bot msg-4">正在分析中... 請稍候。</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="輸入文章網址或內容...">
+                    <button id="send-btn"
+                        style="background:#a57659; color:rgb(235, 233, 233); border:none; margin-left:10px; padding:0 15px;">發送</button>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- 其他分頁：關於我們 -->
+        <section id="about">
+            <h2 class="content-title">關於我們</h2>
+            <p class="about-desc">大家好我們是亂帶風向就不隊,以下是小組成員們簡介</p>
+
+            <div class="team-row row-3">
+                <div class="card">
+                    <div class="image-box"><img src="chi.jpg" alt="組員1"></div>
+                    <p class="member-name">資管四B 410001043 <br>張雯淇</p>
+                    <div class="member-intro">
+                        網站架設與風向文介紹
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="image-box"><img src="sky.jpg" alt="組員2"></div>
+                    <p class="member-name">資圖三A 412000191 <br>張宜潔</p>
+                    <div class="member-intro">
+                        簡報製作與呼籲教育導向
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-box"><img src="girl01.jpg" alt="組員3"></div>
+                    <p class="member-name">資圖三A 412000076<br> 李佳珊</p>
+                    <div class="member-intro">
+                        簡報製作與AI小短片設計
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-row row-2">
+                <div class="card">
+                    <div class="image-box"><img src="fri.jpg" alt="組員4"></div>
+                    <p class="member-name">資圖三A 412000415 <br>吳妤柔</p>
+                    <div class="member-intro">
+                        測驗題目擬定與海報製作
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-box"><img src="boy.jpg" alt="組員5"></div>
+                    <p class="member-name">資圖四A 411000374 <br>陳映中</p>
+                    <div class="member-intro">
+                        測驗題目擬定與網站協作
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+<!--  1.測驗區動畫設定-->
+    <script>
+
+        function showSection(id) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // 測驗題目數據
+        const questions = [
+            //第一題
+            {
+                q: "當你在社群平台上看到一篇情緒激昂、指責某個公眾人物的熱門貼文時，\n你的第一反應通常是什麼？"
+                , a: ["(A) 先冷靜下來，尋找該事件是否有其他視角的報導或說明。", "(B) 先查看留言區，看看大多數網友的意見是什麼。", "(C) 立刻感到憤怒並點讚或轉發支持。", "(D) 直接忽視，反正網路上的消息多半是假的。"]
+            },
+            //第二題
+            {
+                q: "關於「風向文」的特徵，下列何者最不具備操弄意圖？"
+                , a: ["(A) 內文引用了多方查證的數據並標註了完整原始連結。", "(B) 大量使用「所有人都知道」、「不轉發就沒良心」等道德綁架詞彙。", "(C) 內文只有單方面的指控，且缺乏具體時間地點。", "(D) 標題極其聳動且使用大量驚嘆號。"]
+            },
+            //第三題
+            {
+                q: "當你發現一篇貼文的觀點與你的既有認知完全一致時，你該如何保持警覺？"
+                , a: ["(A) 不必查證，因為認同感就是最好的證明。", "(B) 轉發給志同道合的朋友，加強這個論點。", "(C) 確認這就是真相，因為它符合邏輯。", "(D) 自省是否因為「確認偏誤」而過快接受該資訊。"]
+            },
+
+
+            { q: "你認為匿名論壇的爆料準確度如何？", a: ["極高", "通常是真的", "參考就好", "極低"] },
+
+
+            { q: "看到文章內使用大量「驚爆」、「憤怒」等字眼時？", a: ["覺得很刺激", "感到熱血", "警覺可能在帶風向", "沒感覺"] },
+
+
+            { q: "你會定期關注不同立場的媒體嗎？", a: ["不會，只看喜歡的", "偶爾", "經常", "我是資訊雜食者"] },
+
+
+            { q: "當親友轉傳未經證實的消息到群組，你會？", a: ["幫忙轉傳", "冷處理", "私下提醒查證", "當眾糾正"] },
+
+
+            { q: "面對網路上的一面倒評論，你會尋找反方意見嗎？", a: ["從不", "很少", "通常會", "一定會"] },
+
+
+            { q: "你是否了解什麼是「網路水軍」？", a: ["不知道", "聽過但不清楚", "大概了解", "非常了解"] },
+
+
+            { q: "你覺得自己容易被網路輿論影響嗎？", a: ["非常容易", "還好", "不太容易", "完全不會"] }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            showSection('quiz-game');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = questions[currentQuestionIndex];
+            document.getElementById('current-q-num').innerText = currentQuestionIndex + 1;
+            document.getElementById('question-text').innerText = q.q;
+
+            const container = document.getElementById('options-container');
+            container.innerHTML = ''; // 清空舊選項
+
+            q.a.forEach((optionText, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option';
+                btn.innerText = optionText;
+                btn.onclick = () => handleAnswer();
+                container.appendChild(btn);
+            });
+        }
+
+        function handleAnswer() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            showSection('quiz-result');
+            const resultText = document.getElementById('result-text');
+            resultText.innerText = "恭喜你完成 10 題測驗！你的資訊識讀能力為：高階防禦者。請繼續保持對資訊的懷疑精神，不輕易被風向左右。";
+        }
+    </script>
+
+
+<!-- 2.AI解答區互動設定 -->
+    <script>
+        let clickCount = 0; // 記錄點擊次數
+
+        document.getElementById('send-btn').addEventListener('click', function () {
+            clickCount++; // 每次點擊加 1
+
+            const msg2 = document.querySelector('.msg-2');
+            const msg3 = document.querySelector('.msg-3');
+            const msg4 = document.querySelector('.msg-4');
+
+            if (clickCount === 1) {
+                // 【第一次按下】：顯示使用者的話
+                msg2.classList.add('show');
+
+                // 改變按鈕文字，提示使用者可以進行下一步
+                this.innerText = "發送";
+
+            } else if (clickCount === 2) {
+                // 【第二次按下】：顯示分析過程
+
+                // 顯示第三句
+                setTimeout(() => {
+                    msg3.classList.add('show');
+                }, 500);
+
+                // 顯示第四句
+                setTimeout(() => {
+                    msg4.classList.add('show');
+                }, 2000);
+
+                // 完成後停用按鈕
+                this.disabled = true;
+                this.innerText = "發送";
+            }
+        });
+
+    </script>
+
+
+
+<!-- 3.關於我們動畫設定 -->
+    <script>
+
+        const teamCards = document.querySelectorAll('#about .card');
+
+        teamCards.forEach(card => {
+            card.addEventListener('click', function () {
+                // 1. 檢查這張卡片是否已經是開啟狀態
+                const isActive = this.classList.contains('active');
+
+                // 2. 先把「所有」卡片的 active 移除 (確保一次只開一個)
+                teamCards.forEach(c => c.classList.remove('active'));
+
+                // 3. 如果原本沒開啟，現在就開啟它；如果原本就開了，點擊後就縮回去
+                if (!isActive) {
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <footer>
+        <strong>&copy; 2026 風向文研究室 版權所有</strong>
+    </footer>
+
+</body>
+
+</html>
