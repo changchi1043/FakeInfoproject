@@ -142,6 +142,21 @@
      color: #494534;
  }
 
+
+ /* 內容區塊標題 */
+ .content-title {
+     font-size: 5rem;
+     margin-bottom: 20px;
+     border-bottom: 2px solid #ffffff;
+     display: inline-block;
+     padding-bottom: 10px;
+     letter-spacing: 5px;
+     margin-bottom: 30px;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+ }
+
+ /*綜合調整區以上為止*/
+
  /* 測驗題目樣式 */
 
  .progress-bar {
@@ -189,8 +204,13 @@
 
 
 
- /* AI 聊天介面框架 */
- .chat-container {
+
+
+
+
+
+ /* AI解答區css調整 */
+ #ai-zone .chat-container {
      border: 1px solid #333;
      height: 400px;
      display: flex;
@@ -201,13 +221,13 @@
      text-align: left;
  }
 
- .chat-messages {
+ #ai-zone .chat-messages {
      flex: 1;
      padding: 20px;
      overflow-y: auto;
  }
 
- .message {
+ #ai-zone .message {
      padding: 12px 18px;
      margin-bottom: 15px;
      border-radius: 15px;
@@ -218,7 +238,7 @@
      clear: both;
  }
 
- .bot {
+ #ai-zone .bot {
      background-color: #3E2723;
      color: #F5F5DC;
      border-left: 5px solid #D4AF37;
@@ -227,7 +247,7 @@
      border-bottom-left-radius: 2px;
  }
 
- .user {
+ #ai-zone .user {
      background-color: #FFF8E1;
      /* 焦糖橘 */
      color: #3E2723;
@@ -237,13 +257,13 @@
      /* 文字維持左對齊 */
  }
 
- .chat-input {
+ #ai-zone .chat-input {
      border-top: 1px solid #494534;
      padding: 15px;
      display: flex;
  }
 
- .chat-input input {
+ #ai-zone .chat-input input {
      flex: 1;
      background: #FFF8E1;
      border: none;
@@ -254,13 +274,13 @@
 
 
 
- .message {
+ #ai-zone .message {
      opacity: 0;
      transform: translateY(10px);
  }
 
  /* 修正第一句：讓它載入時自動執行動畫 */
- .msg-1 {
+ #ai-zone .msg-1 {
      /* 這裡直接寫死動畫，不依賴 JS 的 .show */
      animation: messageFadeIn 0.8s ease-out 0.5s forwards !important;
  }
@@ -279,9 +299,15 @@
 
 
  /* 後續訊息：預設隱藏，不設定動畫，改用 transition */
- .msg-2,
+ #ai-zone .msg-2,
  .msg-3,
  .msg-4 {
+     opacity: 0;
+     transform: translateY(10px);
+     transition: opacity 0.5s ease, transform 0.5s ease;
+ }
+
+ #ai-zone .msg-5 {
      opacity: 0;
      transform: translateY(10px);
      transition: opacity 0.5s ease, transform 0.5s ease;
@@ -296,7 +322,7 @@
 
  /* 第四句閃爍特效：當 .show 存在時才啟動動畫 */
  /* 1. 確保 msg-4 的基礎狀態 */
- .msg-4 {
+ #ai-zone .msg-4 {
      opacity: 0;
      transform: translateY(10px);
      transition: opacity 0.5s ease, transform 0.5s ease;
@@ -306,7 +332,7 @@
  }
 
  /* 2. 當 JavaScript 加入 .show 時，同時啟動出現動畫與閃爍動畫 */
- .msg-4.show {
+ #ai-zone .msg-4.show {
      opacity: 1 !important;
      transform: translateY(0) !important;
      color: #FFD700;
@@ -333,19 +359,72 @@
      }
  }
 
+ #ai-zone .msg-5 {
+     color: #f42c2c;
 
- /* 內容區塊標題 */
- .content-title {
-     font-size: 5rem;
-     margin-bottom: 20px;
-     border-bottom: 2px solid #ffffff;
-     display: inline-block;
-     padding-bottom: 10px;
-     letter-spacing: 5px;
-     margin-bottom: 30px;
-     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+     font-weight: bold;
  }
 
+ #ai-zone .msg-5.show {
+     opacity: 1 !important;
+     transform: translateY(0) !important;
+ }
+
+
+ /* 1. 將 msg-6 加入預設隱藏的過渡群組 */
+ #ai-zone .msg-6 {
+     opacity: 0;
+     transform: translateY(10px);
+     transition: opacity 0.5s ease, transform 0.5s ease;
+ }
+
+ /* 2. 設計螢光筆標註效果 */
+ #ai-zone .highlight {
+     background-color: #FFD700;
+     /* 明亮的螢光金/黃色 */
+     color: #3E2723 !important;
+     /* 強制變成深咖啡色，確保文字極度清晰 */
+     padding: 2px 6px;
+     border-radius: 4px;
+     font-weight: 900;
+     /* 最粗體 */
+     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+     /* 加一點立體陰影 */
+ }
+
+ /* 3. 利用 CSS 虛擬元素，自動把 data-note 裡的分析文字顯示出來 */
+ #ai-zone .highlight::after {
+     content: attr(data-note);
+     display: inline-block;
+     background-color: #E53935;
+     color: #FFFFFF;
+     font-size: 0.7rem;
+     /* 【修改】字體稍微縮小 */
+     font-weight: bold;
+     padding: 1px 5px;
+     /* 【修改】縮減上下左右的內距，讓標籤變瘦 */
+     border-radius: 6px;
+     /* 【修改】縮小圓角，從橢圓膠囊變成帶圓角的長方形 */
+     margin-left: 6px;
+     /* 【修改】稍微拉近與原文的距離 */
+     margin-right: 2px;
+     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+     /* 【修改】減輕陰影，看起來更貼合紙面 */
+     transform: translateY(-1px);
+     /* 【修改】微調上浮高度，對齊文字重心 */
+     font-family: "微軟正黑體", sans-serif;
+     letter-spacing: normal;
+     /* 【修改】拿掉額外的字距，讓文字更緊湊 */
+ }
+
+ /*以上為止*/
+
+
+ /*風向文介紹 css*/
+
+ #intro-info * {
+     font-family: "DFKai-SB", "BiauKai", "標楷體", serif;
+ }
 
 
  #intro-info p strong {
@@ -357,9 +436,83 @@
  }
 
 
+ #intro-info h1 {
+     text-align: center;
+     color: #FFFFFF;
+     font-size: 5em;
+     letter-spacing: 3px;
+     margin-bottom: 20px;
+ }
 
 
- .definition-text {
+ #intro-info .sub-title {
+     display: inline-block;
+     background: linear-gradient(135deg, #E8D9CC, #F5EFE8);
+     color: #5D3A1A;
+     padding: 8px 16px;
+     border-radius: 8px;
+     font-size: 2em;
+     margin-top: 50px;
+     font-weight: bold;
+     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+ }
+
+ #intro-info p {
+     font-size: 1.5em;
+     margin-top: 18px;
+     text-align: justify;
+ }
+
+ #intro-info table {
+     width: 100%;
+     margin-top: 25px;
+     border-collapse: collapse;
+     font-size: 1.4em;
+     background: rgba(255, 255, 255, 0.05);
+     overflow: hidden;
+ }
+
+ #intro-info td {
+     padding: 14px;
+     border: 1px solid #5D3A1A;
+     text-align: center;
+ }
+
+ /* 表頭強化 */
+ #intro-info tr:first-child td {
+     background: #E8D9CC;
+     color: #5D3A1A;
+     font-weight: bold;
+     font-size: 1.2em;
+ }
+
+ /* 宣傳影片部分 */
+ #intro-info .video-wrapper {
+     width: 100%;
+     max-width: 800px;
+     margin: 30px auto 0;
+     aspect-ratio: 16 / 9;
+     background: #000;
+     border-radius: 10px;
+     overflow: hidden;
+     border: 1px solid #8B5E34;
+ }
+
+ #intro-info .video-wrapper video {
+     width: 100%;
+     height: 100%;
+     object-fit: contain;
+ }
+
+ #intro-info hr {
+     margin: 50px 0;
+     border: 0;
+     border-top: 1px solid #D8C3B2;
+     opacity: 0.6;
+ }
+
+
+ #intro-info .definition-text {
      text-align: left;
      margin-bottom: 40px;
      padding-left: 10px;
@@ -368,7 +521,7 @@
  }
 
  /* 圖文框容器：使用 Flex 讓三個框並排 */
- .card-container {
+ #intro-info .card-container {
      display: flex;
      justify-content: space-between;
      /* 均勻分配空間 */
@@ -377,7 +530,7 @@
  }
 
  /* 單個圖文框樣式 */
- .card {
+ #intro-info .card {
      flex: 1;
      background: #FFF8E1;
      border: 1px solid #ddd;
@@ -391,7 +544,7 @@
      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
  }
 
- .card p {
+ #intro-info .card p {
      /* 假設你想用稍微暖一點的咖啡色 */
      color: #5D4037;
      font-size: 1rem;
@@ -401,7 +554,7 @@
 
 
  /* 圖片放置區 */
- .image-box {
+ #intro-info .image-box {
      width: 100%;
      height: 200px;
      background-color: #f6f5f5;
@@ -415,16 +568,17 @@
  }
 
  /* 如果有圖片，讓它填滿框框 */
- .image-box img {
+ #intro-info .image-box img {
      width: 100%;
      height: 100%;
      object-fit: cover;
  }
 
+ /*以上為止*/
 
- 
+
  /* --- 關於我們區塊敘述 --- */
- .about-desc {
+ #about .about-desc {
      text-align: center;
      color: #F5F5DC;
      margin-bottom: 60px;
@@ -432,7 +586,7 @@
  }
 
  /* --- 每一排的通用設定 --- */
- .team-row {
+ #about .team-row {
      display: flex;
      justify-content: center;
      gap: 30px;
@@ -487,23 +641,201 @@
  }
 
  /* --- 第二排特殊對齊 --- */
- .row-2 {
+ #about .row-2 {
      max-width: 600px;
      margin-left: auto;
      margin-right: auto;
  }
 
  /* --- 組員姓名與圖片 --- */
- .member-name {
+ #about .member-name {
      font-weight: bold;
      font-size: 1.2rem;
-     color: #3E2723;
+     color: #ecdbd7;
      margin-top: 10px;
  }
 
- .image-box img {
+ #about .image-box img {
      width: 100%;
      height: 200px;
      object-fit: cover;
      border-radius: 8px;
  }
+
+ /*以上為止*/
+
+ /* 常見手法 css*/
+ /* --- 1. 手法清單區塊 (精簡版) --- */
+ #technique {
+     max-width: 650px;
+     margin: 20px auto;
+     padding: 20px;
+     background-color: #ffffff;
+     border-radius: 12px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+     color: #333;
+     /* 確保清單文字也是深色 */
+     text-align: left;
+     /* 修正原本繼承 container 的置中 */
+ }
+
+ #technique .technique-list {
+     list-style: none;
+     padding: 0;
+ }
+
+ #technique .technique-list li {
+     padding: 12px;
+     border-bottom: 1px solid #eee;
+ }
+
+ #technique .active-item {
+     background-color: #f8f9fa;
+     border-left: 4px solid #ff4757;
+     font-weight: bold;
+ }
+
+ #technique .analyze-toggle {
+     margin-left: 10px;
+     padding: 4px 10px;
+     font-size: 12px;
+     cursor: pointer;
+     background: #ff4757;
+     color: white;
+     border: none;
+     border-radius: 4px;
+     transition: 0.2s;
+ }
+
+ #technique .analyze-toggle:hover {
+     background: #e63946;
+ }
+
+ /* --- 2. 模擬貼文區塊 (修正間距與顏色) --- */
+ #technique .mock-post-container {
+     margin-top: 25px;
+     border: 1px solid #e0e0e0;
+     border-radius: 8px;
+     padding: 20px;
+     /* 增加內距 */
+     background-color: #ffffff;
+
+ }
+
+ #technique .post-header {
+     display: flex;
+     align-items: center;
+     margin-bottom: 15px;
+ }
+
+ #technique .avatar {
+     width: 40px;
+     height: 40px;
+     background: #ddd;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-right: 12px;
+     font-weight: bold;
+ }
+
+ #technique .user-info strong {
+     display: block;
+     font-size: 15px;
+     color: #1c1e21;
+ }
+
+ #technique .user-info span {
+     font-size: 13px;
+     color: #65676b;
+ }
+
+ #technique .post-body p {
+     color: #332a21;
+     font-size: 1rem;
+     line-height: 1.8;
+     /* 增加行高，改善閱讀感 */
+     margin: 12px 0;
+     font-family: sans-serif;
+ }
+
+ #technique .warning {
+     color: #ff4757;
+     font-weight: bold;
+     display: block;
+     margin-bottom: 10px;
+ }
+
+ /* --- 3. 分析模式控制 (優化標籤間距) --- */
+ #technique .mark {
+     position: relative;
+     display: inline-block;
+     /* 關鍵：確保三角與標籤相對於文字區塊定位 */
+     transition: background 0.3s;
+     line-height: 1.2;
+     /* 縮小行內高，避免干擾段落間距 */
+     color: inherit;
+ }
+
+ /* 啟動分析時的螢光筆效果 */
+ #technique .active-analysis .mark {
+     background-color: rgba(255, 241, 118, 0.6);
+     cursor: help;
+ }
+
+ /* 修正小標籤位置與間距 */
+ #technique .active-analysis .mark::after {
+     content: attr(data-tip);
+     position: absolute;
+     /* 強制定位在文字底部下方 12px 處 */
+     top: calc(100% + 12px);
+     left: 50%;
+     transform: translateX(-50%);
+     background: #333;
+     color: #fff;
+     font-size: 11px;
+     padding: 5px 10px;
+     border-radius: 4px;
+     white-space: nowrap;
+     z-index: 100;
+     pointer-events: none;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+     display: block !important;
+     /* 強制顯示 */
+ }
+
+ /* 小三角形箭頭 (選加，讓標籤更像對話框) */
+ #technique .active-analysis .mark::before {
+     content: "";
+     position: absolute;
+     /* 強制定位在文字底部正下方 2px 處 */
+     top: calc(100% + 2px);
+     left: 50%;
+     transform: translateX(-50%);
+     border: 5px solid transparent;
+     border-bottom-color: #333;
+     /* 箭頭向上指 */
+     z-index: 100;
+     display: block !important;
+     /* 強制顯示 */
+ }
+
+ #technique .post-body p {
+     margin-bottom: 40px !important;
+     /* 增加下方間距給標籤預留位置 */
+     line-height: 1.8;
+ }
+
+ /* 確保最後一行也有空間 */
+ #technique .post-body p:last-child {
+     margin-bottom: 20px !important;
+ }
+
+ #technique .mock-post-container p {
+     margin: 25px 0;
+     /* 稍微增加段落間的距離，給標籤留位置 */
+     line-height: 2;
+ }
+
+ /*以上為止*/

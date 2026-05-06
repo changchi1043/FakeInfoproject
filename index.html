@@ -33,14 +33,14 @@
         <section id="quiz-intro">
             <h2 class="content-title">風向文判斷力測驗<br></h2>
             <p>準備好測試你的判斷力了嗎⏱︎<br>
-                透過 10 個情境題，看看你面對網路風向文的反應如何。<br>
+                透過15個測驗題，看看你面對網路風向文的反應如何。<br>
                 依照直覺回答，完成後會顯示你的等級囉~</p>
             <button class="btn" onclick="startQuiz()">測驗開始</button>
         </section>
 
         <!-- 測驗題目區 -->
         <section id="quiz-game">
-            <div class="progress-bar">問題 <span id="current-q-num">1</span> / 10</div>
+            <div class="progress-bar">問題 <span id="current-q-num">1</span> / <span id="total-q-num">10</span></div>
             <h3 id="question-text">題目載入中...</h3>
             <div id="options-container">
                 <!-- 選項會由 JS 動態生成 -->
@@ -51,18 +51,104 @@
         <section id="quiz-result">
             <h2 class="content-title">測驗結果</h2>
             <p id="result-text">正在計算結果...</p>
+            <!-- 分數門檻說明：測驗結束後顯示在結果說明下方 -->
+            <div id="threshold-info" style="text-align:left; max-width:800px; margin: 20px auto 0; color: #F5F5DC;">
+            </div>
             <button class="btn" onclick="showSection('home')">回到主頁</button>
         </section>
 
-        <!-- 其他分頁：風向文介紹 -->
-        <section id="intro-info">
-            <h2 class="content-title">風向文介紹</h2>
+        <!--風向文介紹-->
 
-            <div class="definition-text">
-                <p><strong>定義</strong></p>
-                <p>是常見於現代社群軟體中的流行用語，指有心人士刻意製造、引導特定的輿論方向，試圖影響大眾的想法。通常在事件發生初期，前幾個推噓文的態度會成為關鍵，引導後續留言跟風，常見於行銷操作、公共議題爭議或網軍攻防。
-                </p>
-            </div>
+        <section id="intro-info" style="padding: 30px 28px;
+            
+            font-family: 'Noto Sans TC', sans-serif;
+            color: #FFFFFF;
+            max-width: 1100px;
+            margin: auto;
+            line-height: 1.9;">
+
+            <h1>風向文介紹</h1>
+
+            <!-- 01 -->
+            <div class="sub-title">01｜學術定義</div>
+
+            <p style>
+                根據國家通訊傳播委員會（NCC）對媒體識讀與輿論操作的說明，所謂「風向文」通常是指在網路平台上，透過特定立場、情緒化語言、選擇性資訊或重複傳播等方式，引導大眾輿論方向的文章與貼文，其目的在於影響閱聽人的觀感、態度與判斷。此類內容常見於社群媒體、論壇與新聞留言區，與媒體操弄、假訊息及網路輿論形成密切相關。
+            </p>
+
+            <hr>
+
+            <!-- 02 -->
+            <div class="sub-title">02｜辨識結構</div>
+
+            <table>
+                <tr>
+                    <td>面向</td>
+                    <td>一般敘事</td>
+                    <td>風向文</td>
+                </tr>
+                <tr>
+                    <td><b>資訊來源</b></td>
+                    <td>多元且可追溯</td>
+                    <td>來源模糊或單一</td>
+                </tr>
+                <tr>
+                    <td><b>語氣表現</b></td>
+                    <td>理性、客觀</td>
+                    <td>情緒化、引導性強</td>
+                </tr>
+                <tr>
+                    <td><b>資訊結構</b></td>
+                    <td>完整背景與脈絡</td>
+                    <td>片段化強調重點</td>
+                </tr>
+                <tr>
+                    <td><b>輿論狀態</b></td>
+                    <td>多元觀點並存</td>
+                    <td>單一觀點放大</td>
+                </tr>
+            </table>
+
+            <p>
+                差異在於資訊是否被設計成「導向單一解讀」，而非呈現多角度事實。
+            </p>
+
+            <hr>
+
+            <!-- 03 -->
+            <div class="sub-title">03｜形成機制</div>
+
+            <p>
+                風向的形成通常透過多階段擴散與強化，並在社群平台中快速循環：
+            </p>
+
+            <p>
+                <b>① 誘發訊息</b>：例如「某事件疑似內幕曝光」吸引注意<br>
+                <b>② 重複擴散</b>：不同帳號重複相似說法（如截圖轉發）<br>
+                <b>③ 情緒強化</b>：加入憤怒、嘲諷或恐懼語氣提升傳播力<br>
+                <b>④ 意見收斂</b>：反對意見被壓縮或邊緣化<br>
+                <b>⑤ 主流再包裝</b>：媒體整理後成為「共識敘事」
+            </p>
+
+            <p>
+                例如：議題在論壇先被質疑 → 社群大量轉貼片段截圖 → 引發情緒性評論 → 最終整理成「主流看法」，整體過程可能只需數小時至數天。
+            </p>
+
+            <hr>
+
+
+            <!-- 04 -->
+            <div class="sub-title">04｜傳播場域</div>
+
+            <p>
+                不同平台在風向形成中具有不同功能角色，彼此交互影響：
+            </p>
+
+            <p>
+                <b>社群平台</b>：如 Threads / Facebook，負責快速擴散與情緒放大<br>
+                <b>新聞媒體</b>：將分散資訊整合並賦予權威性解讀<br>
+                <b>匿名論壇</b>：如 PTT，提供高密度討論與對立觀點碰撞<br>
+            </p>
 
             <div class="card-container">
                 <div class="card">
@@ -85,30 +171,257 @@
                 </div>
             </div>
 
-            <h2 class="content-title">短影片介紹</h2>
-            <div class="video-container" style="text-align: center; margin-top: 30px;">
-                <video controls
-                    style="width: 100%; max-width: 400px; border-radius: 15px; border: 2px solid #fd9a31; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+            <hr>
+
+            <!-- 影音 -->
+            <div class="sub-title">05｜影音導讀</div>
+
+            <div class="video-wrapper">
+                <video controls>
                     <source src="video.mp4" type="video/mp4">
                 </video>
-                <p></p>
-
             </div>
 
         </section>
 
 
-        <!-- 其他分頁：常見手法 -->
+        <!--常見手法 -->
+
         <section id="technique">
             <h2 class="content-title">風向文常見手法</h2>
-            <ul style="list-style: none; padding: 0;">
-                <li>1. 斷章取義：只截取部分事實。</li>
-                <li>2. 情緒勒索：使用激進詞彙激發憤怒。</li>
-                <li>3. 假裝中立：以路人視角進行評論。</li>
+
+            <ul class="technique-list">
+                <!-- 手法 1 -->
+                <li class="active-item">
+                    1. 假訊息傳播：直接在社群散播刻意捏造資訊，快速擴散誤導輿論
+                    <button class="analyze-toggle" onclick="toggleAnalysis('postCard1', this)">查看手法拆解</button>
+                </li>
             </ul>
+
+            <!-- 模擬社群文章區塊 1 (id 為 postCard1) -->
+            <div class="mock-post-container" id="postCard1">
+                <div class="post-header">
+                    <div class="avatar">爆</div>
+                    <div class="user-info">
+                        <strong>匿名爆料公社 / 正義使者聯盟</strong>
+                        <span>2 小時前 · <i class="fas fa-globe-asia"></i> 公開轉傳</span>
+                    </div>
+                </div>
+                <div class="post-body">
+                    <p class="warning">🔥【全台灣人快看！再不看就來不及了！】🔥</p>
+                    <p>剛才接到<span class="mark"
+                            data-tip="[捏造] 虛構權威來源">在立法院上班的長輩冒死流出的公文</span>：政府明天就要正式啟動那個恐怖的「數位文字審核大數據」了！</p>
+                    <p><span class="mark" data-tip="[引導] 隱私焦慮">大家平常在 LINE 講電話、FB 語音聊天，現在通通會被監控！</span></p>
+                    <p class="action-call">
+                        <span class="mark" data-tip="[引導] 情緒勒索">現在不傳，以後你的帳號可能就被消失了！</span><br>
+                        <strong>#救救血汗錢 #真相只有一個</strong>
+                    </p>
+                </div>
+            </div>
+
+            <hr> <!-- 分隔線 -->
+
+            <ul class="technique-list">
+                <!-- 手法 2 -->
+                <li class="active-item">
+                    2. 情緒煽動：使用聳動標題或恐懼語言，引發讀者本能反應而非理性思考
+                    <button class="analyze-toggle" onclick="toggleAnalysis('postCard2', this)">查看手法拆解</button>
+                </li>
+            </ul>
+
+            <!-- 模擬社群文章區塊 2 (id 為 postCard2) -->
+            <div class="mock-post-container" id="postCard2">
+                <div class="post-header">
+                    <div class="avatar">驚</div>
+                    <div class="user-info">
+                        <strong>全台真相爆料網 / 守護家園大行動</strong>
+                        <span>1 小時前 · <i class="fas fa-globe-asia"></i> 強力擴散</span>
+                    </div>
+                </div>
+                <div class="post-body">
+                    <p class="warning">🚨【天理不容！台灣人集體陷入空前災難，再不醒來就全完了！】🚨</p>
+                    <p>大家還在睡嗎？<span class="mark" data-tip="[恐懼語言] 營造末日迫近感">大禍臨頭了！根據最新消息，一場針對全台灣人的「無聲謀殺」已經開始！</span>
+                    </p>
+                    <p><span class="mark" data-tip="[聳動標題] 利用生存本能製造焦慮">全台大規模「神祕毒素」外洩，政府卻下令封鎖新聞！</span></p>
+                    <p><span class="mark" data-tip="[恐懼語言] 激發極度的不安全感">這根本是現實版的滅絕計畫！讓你變成只會聽話的行屍走肉！</span> 😱😱😱</p>
+                    <p class="action-call">
+                        <span class="mark"
+                            data-tip="[情緒勒索] 綁架親情與責任感">如果你還有良知，就給我瘋狂轉發出去！現在不傳，你就是這場集體屠殺的幫兇！</span><br><br>
+                        <strong>#血債血償 #全台集體憤怒 #為了下一代拼了</strong>
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- === 手法 3：偽裝素人開題 === -->
+            <ul class="technique-list">
+                <li class="active-item">
+                    3. 偽裝素人開題：網軍假扮一般網友發文，製造草根輿論假象
+                    <button class="analyze-toggle" onclick="toggleAnalysis('postCard3', this)">查看手法拆解</button>
+                </li>
+            </ul>
+
+            <div class="mock-post-container" id="postCard3">
+                <div class="post-header">
+                    <div class="avatar">粉</div>
+                    <div class="user-info">
+                        <strong>小粉愛生活 / 地方媽媽碎碎念</strong>
+                        <span>30 分鐘前 · <i class="fas fa-users"></i> 台北生活交流區</span>
+                    </div>
+                </div>
+
+                <div class="post-body">
+                    <p>
+                        <span class="mark"
+                            data-tip="[偽裝素人] 強調平凡身份以降低戒心">我只是一個每天忙著接小孩的普通媽媽，平常真的不太關心政治</span>，但這幾天發生的事情真的讓我看到心很累...
+                    </p>
+
+                    <p>
+                        剛剛去市場買菜，聽到旁邊幾位阿姨也在聊。大家不覺得最近那個「新政策」推得莫名其妙嗎？
+                        <span class="mark" data-tip="[引導] 營造「多數人都有同感」的假象">本來以為只有我覺得怪，沒想到連路人都在罵。</span>
+                    </p>
+
+                    <p>
+                        <span class="mark"
+                            data-tip="[訴諸感性] 將複雜政策簡化為生活委屈">我也不是要批評誰，但日子真的變難過了。以前幾百塊能買一週的菜，現在隨便買買就破千，這難道不是管理出了問題嗎？</span>
+                    </p>
+
+                    <p>
+                        <span class="mark" data-tip="[隱藏意圖] 以「中立」外衣包裝特定風向">我不是哪一黨的粉，我只在乎我的小孩以後有沒有競爭力。</span>
+                        現在看政府這樣花大錢在這種地方，身為家長真的會怕... 有人也跟我一樣，覺得這一切都很荒謬嗎？
+                    </p>
+
+                    <p class="action-call">
+                        <span class="mark"
+                            data-tip="[引導] 誘導群眾留言營造草根共鳴">純粹想抒發一下，沒有要戰。大家覺得呢？歡迎在下面分享，讓我知道我不孤單。</span><br><br>
+                        <strong>#庶民心聲 #不談政治談生活 #有人在聽嗎 #這就是我們要的未來嗎</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- === 手法 4：名人追隨效應 === -->
+            <ul class="technique-list">
+                <li class="active-item">
+                    4. 名人追隨效應：借政治人物或名人背書，放大影響力觸發粉絲效應
+                    <button class="analyze-toggle" onclick="toggleAnalysis('postCard4', this)">查看手法拆解</button>
+                </li>
+            </ul>
+
+            <div class="mock-post-container" id="postCard4">
+                <div class="post-header">
+                    <div class="avatar">粉</div>
+                    <div class="user-info">
+                        <strong>鐵桿粉絲後援會 / 追星不落人後</strong>
+                        <span>10 分鐘前 · <i class="fas fa-star"></i> 熱門推薦</span>
+                    </div>
+                </div>
+
+                <div class="post-body">
+                    <p>
+                        <span class="mark" data-tip="[名人背書] 利用名人光環建立假性公信力">連我們最崇拜的「正義戰神」王大明委員都開口了！</span>
+                        他在剛剛的直播中直接點出，這次的法案根本就是要把台灣推向火坑！
+                    </p>
+
+                    <p>
+                        大明哥說的話什麼時候錯過？<span class="mark"
+                            data-tip="[粉絲效應] 強化「支持名人等於支持正義」的心理">他為了幫小老百姓發聲，擋了多少財團的財路，現在連他在演藝圈的朋友、甚至是金曲歌王都站出來力挺了！</span>
+                    </p>
+
+                    <p>
+                        <span class="mark" data-tip="[簡化議題] 將複雜問題簡化為對名人的忠誠度">這已經不是政策問題，而是「是非黑白」的問題！</span>
+                        你是要相信那些成天說謊的官員，還是要相信這群為了理想不惜被封殺的良心名人？
+                    </p>
+
+                    <p>
+                        <span class="mark" data-tip="[情緒綁架] 利用集體榮譽感驅使行動">身為大明哥的鐵粉，我們不能讓他孤軍奮戰！</span>
+                        當初他陪我們挺過這麼多風雨，現在換我們站出來撐他！
+                    </p>
+
+                    <p class="action-call">
+                        <span class="mark"
+                            data-tip="[擴散誘導] 藉由名譽共感強制要求轉傳">如果你也認同大明哥的熱血，請把這篇文轉發到你的所有群組！讓全世界看到我們粉絲的力量，不要讓正義的聲音被淹沒！</span><br><br>
+                        <strong>#戰神歸來 #守護台灣良心 #粉絲集結 #真相不容抹黑</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- === 手法 5：訊息重複與簡化 === -->
+            <ul class="technique-list">
+                <li class="active-item">
+                    5. 訊息重複與簡化：大量重複模板內容，簡化複雜議題強化單一敘事
+                    <button class="analyze-toggle" onclick="toggleAnalysis('postCard5', this)">查看手法拆解</button>
+                </li>
+            </ul>
+
+            <div class="mock-post-container" id="postCard5">
+                <div class="post-header">
+                    <div class="avatar">傳</div>
+                    <div class="user-info">
+                        <strong>真相傳播站 / 每日新聞懶人包</strong>
+                        <span>5 分鐘前 · <i class="fas fa-sync-alt"></i> 熱門洗版中</span>
+                    </div>
+                </div>
+
+                <div class="post-body">
+                    <p class="warning">
+                        <span class="mark" data-tip="[簡化議題] 將複雜法案縮減為極端口號">【不簽法案 = 台灣滅亡，就是這麼簡單！】</span>
+                    </p>
+
+                    <p>
+                        大家不要被那些專家的長篇大論騙了！真相只有一句話：<span class="mark"
+                            data-tip="[訊息重複] 透過不斷複製貼上強化大腦迴路">「現在不簽，明天失業；現在不簽，明天失業！」</span>
+                    </p>
+
+                    <p>
+                        <span class="mark" data-tip="[單一敘事] 刻意忽略所有優缺點的權衡">支持這個法案，經濟就會好；反對這個法案，經濟就會垮。</span>
+                        沒有什麼好討論的空間，選錯了就是背叛下一代！
+                    </p>
+
+                    <p>
+                        <span class="mark" data-tip="[模板化] 容易被大量機器人帳號複製的語句">請記住這三點，這就是唯一的真相：
+                            <br>● 簽了才有錢
+                            <br>● 簽了才有錢
+                            <br>● 簽了才有錢！</span>
+                    </p>
+
+                    <p class="action-call">
+                        <span class="mark"
+                            data-tip="[強制擴散] 利用「洗腦循環」達成病毒式傳播">這句口號給我刷起來！在所有留言區複製這段話，直到大家都看見為止！只要我們說得夠多次，這就是事實！</span><br><br>
+                        <strong>#現在不簽明天失業 #唯一真相 #重要的事情說三遍 #簡單看懂台灣未來</strong>
+                    </p>
+                </div>
+            </div>
+
         </section>
 
-        <!-- 其他分頁：AI風向文解答區 -->
+        <!-- 關鍵修正：萬用 JavaScript 邏輯 -->
+        <script>
+            /**
+             * 修正後的切換函數
+             * @param {string} targetId - 要控制的卡片 ID (例如 postCard1 或 postCard2)
+             * @param {HTMLElement} btn - 按鈕本身
+             */
+            function toggleAnalysis(targetId, btn) {
+                // 1. 抓取指定的文章卡片
+                var postCard = document.getElementById(targetId);
+
+                if (postCard) {
+                    // 2. 切換該卡片的 active-analysis 類別
+                    postCard.classList.toggle('active-analysis');
+
+                    // 3. 判斷狀態並更改該按鈕的文字與顏色
+                    if (postCard.classList.contains('active-analysis')) {
+                        btn.innerHTML = "隱藏拆解";
+                        btn.style.background = "#666";
+                    } else {
+                        btn.innerHTML = "查看手法拆解";
+                        btn.style.background = "#ff4757";
+                    }
+                }
+            }
+        </script>
+
+        <!--AI風向文解答區 -->
         <section id="ai-zone">
             <h2 class="content-title">AI 風向文解答區</h2>
             <p>貼上你懷疑的文章，讓我來為你分析吧</p>
@@ -121,7 +434,23 @@
                         某大勢女團成員親哥哥遭週刊爆料, 妻子指控家暴及強迫性行為, 隨後妻公開傷勢照片，目前正在網路上瘋傳
                         此外哥哥也被另被指控私下與女直播主有不良交易，對話內容也全曝光，詳細內容請繼續往下閱讀......</div>
 
-                    <div class="message bot msg-4">正在分析中... 請稍候。</div>
+                    <div class="message bot msg-4">🔍 正在進行分析中...</div>
+                    <div class="message bot msg-5"> 系統警示：此篇文章為高風險風向文 </div>
+                    <!-- 前面的 msg-1 到 msg-5 ... -->
+
+                    <!-- 第六句：標註後的文章 -->
+                    <div class="message bot msg-6">
+                        <p style="margin-bottom: 10px; font-weight: bold; color: #D4AF37;">
+                            📝 詳細介說：
+                        </p>
+                        <p>
+                            <span class="highlight" data-note="[蹭熱度標籤]">«Threads 熱門趨勢篇 ⁉️»</span>
+                            <span class="highlight" data-note="[模糊指代，引發各家粉絲恐慌]">某大勢女團成員</span>親哥哥遭週刊爆料, 妻子指控家暴及強迫性行為,
+                            隨後妻公開傷勢照片，目前正在<span class="highlight" data-note="[煽動性用詞]">網路上瘋傳</span><br><br>
+                            此外哥哥也被另被指控私下與女直播主有不良交易，對話內容也<span class="highlight" data-note="[誇張詞彙]">全曝光</span>，<span
+                                class="highlight" data-note="[典型騙點擊/騙留言手法]">詳細內容請繼續往下閱讀......</span>
+                        </p>
+                    </div>
                 </div>
                 <div class="chat-input">
                     <input type="text" placeholder="輸入文章網址或內容...">
@@ -132,12 +461,11 @@
         </section>
 
 
-
-
-        <!-- 其他分頁：關於我們 -->
+        <!--關於我們 -->
         <section id="about">
             <h2 class="content-title">關於我們</h2>
-            <p class="about-desc">大家好我們是亂帶風向就不隊,以下是小組成員們簡介</p>
+            <p class="about-desc">大家好我們是亂帶風向就不隊，本次的專題發想是以風向文作為主題。<br>
+                以下是我們組員介紹:</p>
 
             <div class="team-row row-3">
                 <div class="card">
@@ -184,8 +512,7 @@
 
     </div>
 
-
-<!--  1.測驗區動畫設定-->
+    <!--  1.測驗區動畫設定-->
     <script>
 
         function showSection(id) {
@@ -196,49 +523,190 @@
         }
 
         // 測驗題目數據
+        // 注意：每個問題的 `a` 陣列代表選項文字，選項的預設權重會在渲染時顯示並可由使用者調整。
+        //
+        // 如何自定每個選項的分數：
+        // - 預設每個選項的權重為 1,2,3,4（從第一個選項到第四個選項）。
+        // - 若想要硬編碼每題每選項的預設分數，可改寫下面的 `defaultOptionWeights` 變數
+        //   為一個二維陣列，例如: [[4,3,2,1], [1,2,3,4], ...]，陣列長度需與題目數相同。
+        //
+        // 如何自定最終結果的分數表：
+        // - 修改下方 `resultThresholds` 陣列（由低到高），每個物件定義該分數上限與對應回傳的文字。
+        // - 範例：{ max: 20, text: '低' }, { max: 40, text: '中' }, { max: Infinity, text: '高' }
+
+        // 預設每題每選項的權重 (若需為每題自訂預設值，請改寫為二維陣列，見上方註解)
+        const defaultOptionWeights = [
+            [3, 2, 0, 1], [3, 0, 1, 1], [0, 0, 1, 3], [0, 1, 2, 3], [3, 0, 2, 2],
+            [3, 0, 1, 3], [3, 1, 1, 0], [1, 0, 3, 0], [1, 0, 3, 0], [3, 2, 0, 1],
+            [0, 3, 1, 2], [1, 0, 3, 0], [0, 3, 1, 0], [0, 1, 3, 0], [0, 1, 3, 2]
+        ]; // null 表示使用全域預設 [1,2,3,4]
+
         const questions = [
             //第一題
             {
-                q: "當你在社群平台上看到一篇情緒激昂、指責某個公眾人物的熱門貼文時，\n你的第一反應通常是什麼？"
-                , a: ["(A) 先冷靜下來，尋找該事件是否有其他視角的報導或說明。", "(B) 先查看留言區，看看大多數網友的意見是什麼。", "(C) 立刻感到憤怒並點讚或轉發支持。", "(D) 直接忽視，反正網路上的消息多半是假的。"]
+                q: "當你在社群平台上看到一篇情緒激昂、指責某個公眾人物的熱門貼文時，\n你的第一反應通常是什麼？",
+                a: ["(A) 先冷靜下來，尋找該事件是否有其他視角的報導或說明。",
+                    "(B) 先查看留言區，看看大多數網友的意見是什麼。",
+                    "(C) 立刻感到憤怒並點讚或轉發支持。",
+                    "(D) 直接忽視，反正網路上的消息多半是假的。"]
             },
             //第二題
             {
-                q: "關於「風向文」的特徵，下列何者最不具備操弄意圖？"
-                , a: ["(A) 內文引用了多方查證的數據並標註了完整原始連結。", "(B) 大量使用「所有人都知道」、「不轉發就沒良心」等道德綁架詞彙。", "(C) 內文只有單方面的指控，且缺乏具體時間地點。", "(D) 標題極其聳動且使用大量驚嘆號。"]
+                q: "關於「風向文」的特徵，下列何者最不具備操弄意圖？",
+                a: ["(A) 內文引用了多方查證的數據並標註了完整原始連結。",
+                    "(B) 大量使用「所有人都知道」、「不轉發就沒良心」等道德綁架詞彙。",
+                    "(C) 內文只有單方面的指控，且缺乏具體時間地點。",
+                    "(D) 標題極其聳動且使用大量驚嘆號。"]
             },
             //第三題
             {
-                q: "當你發現一篇貼文的觀點與你的既有認知完全一致時，你該如何保持警覺？"
-                , a: ["(A) 不必查證，因為認同感就是最好的證明。", "(B) 轉發給志同道合的朋友，加強這個論點。", "(C) 確認這就是真相，因為它符合邏輯。", "(D) 自省是否因為「確認偏誤」而過快接受該資訊。"]
+                q: "當你發現一篇貼文的觀點與你的既有認知完全一致時，你該如何保持警覺？",
+                a: ["(A) 不必查證，因為認同感就是最好的證明。",
+                    "(B) 轉發給志同道合的朋友，加強這個論點。",
+                    "(C) 確認這就是真相，因為它符合邏輯。",
+                    "(D) 自省是否因為「確認偏誤」而過快接受該資訊。"]
             },
-
-
-            { q: "你認為匿名論壇的爆料準確度如何？", a: ["極高", "通常是真的", "參考就好", "極低"] },
-
-
-            { q: "看到文章內使用大量「驚爆」、「憤怒」等字眼時？", a: ["覺得很刺激", "感到熱血", "警覺可能在帶風向", "沒感覺"] },
-
-
-            { q: "你會定期關注不同立場的媒體嗎？", a: ["不會，只看喜歡的", "偶爾", "經常", "我是資訊雜食者"] },
-
-
-            { q: "當親友轉傳未經證實的消息到群組，你會？", a: ["幫忙轉傳", "冷處理", "私下提醒查證", "當眾糾正"] },
-
-
-            { q: "面對網路上的一面倒評論，你會尋找反方意見嗎？", a: ["從不", "很少", "通常會", "一定會"] },
-
-
-            { q: "你是否了解什麼是「網路水軍」？", a: ["不知道", "聽過但不清楚", "大概了解", "非常了解"] },
-
-
-            { q: "你覺得自己容易被網路輿論影響嗎？", a: ["非常容易", "還好", "不太容易", "完全不會"] }
+            //第四題
+            {
+                q: "在判斷一篇長文的風向時，觀察「留言區」的正確態度為何？",
+                a: ["(A)留言數最多的意見就是主流民意，值得採信。",
+                    "(B)只看按讚數最高的留言即可。",
+                    "(C)留言區的內容完全不具參考價值，應直接跳過。",
+                    "(D)觀察是否有大量重複、格式相近的帳號在洗版。"]
+            },
+            //第五題
+            {
+                q: "若一篇貼文使用了「匿名爆料」或「內部人士透露」，\n但沒有提供任何實體證據，這通常意味著？",
+                a: ["(A)該訊息的可信度極低，可能是刻意製造的謠言。",
+                    "(B)只要有很多人轉發，這則消息就有很高的可信度。",
+                    "(C)爆料者為了保密，所以不能提供證據，這很合理。",
+                    "(D)這是一則極具價值的獨家消息。"]
+            },
+            //第六題
+            {
+                q: "所謂「回聲筒效應」如何影響你的閱讀能力?",
+                a: ["(A)它讓你只接收到單一觀點，逐漸喪失批判思考的能力。",
+                    "(B)它對個人判斷力沒有負面影響。",
+                    "(C)它能幫助你過濾掉沒用的雜訊。",
+                    "(D)它讓你接觸到更專業、更深入的同類資訊。"]
+            },
+            //第七題
+            {
+                q: "在閱讀公共議題的文章時，發現作者使用了強烈的「非黑即白」二分法標籤，這通常是？",
+                a: ["(A)為了讓讀者快速理解複雜問題的效率手法。",
+                    "(B)這是正確的，因為真理通常只有一個答案。",
+                    "(C)作者立場堅定、不畏權勢的表現。",
+                    "(D)一種情緒動員的手段，意圖簡化議題並激發敵意。",]
+            },
+            //第八題
+            {
+                q: "當某個事件出現「反轉」新聞時，你過去曾有的反應中，\n哪一種代表你具備良好的自我修正能力？",
+                a: ["(A)分析自己為何會被前一則資訊誤導，並吸收新證據修正觀點。",
+                    "(B)感到尷尬並假裝自己從沒相信過之前的資訊。",
+                    "(C)從此不再關心任何新聞，覺得反正都會反轉。",
+                    "(D)認為反轉的新聞才是假消息，堅持原本的看法。"]
+            },
+            //第九題
+            {
+                q: "演算法如何加劇你被帶風向的風險？",
+                a: ["(A)演算法只跟廣告有關，不影響新聞觀看。",
+                    "(B)演算法會隨機推送內容，增加多元性。",
+                    "(C)它會精準推送你感興趣、甚至偏激的內容，讓你以為全世界都這麼想。",
+                    "(D)演算法會幫我們過濾掉所有不實資訊。"]
+            },
+            //第十題
+            {
+                q: "要提升「風向文閱讀能力」，日常生活中最有效的練習是？",
+                a: ["(A)針對同一事件，主動尋找不同立場的觀點進行對比。",
+                    "(B)只閱讀大型權威媒體報導。",
+                    "(C)多跟想法一致的朋友討論。",
+                    "(D)完全不看網路上任何有主觀評論的文章。"]
+            },
+            //第十一題
+            {
+                q: "當你看到一篇以「截圖」呈現的爆料貼文（對話截圖、聊天紀錄等），但沒有提供原始連結或完整脈絡時，你最好的做法是？",
+                a: ["(A)先轉發，等有人出來澄清再說。",
+                    "(B)請對方提供原始貼文/完整上下文，並用關鍵字搜尋其他來源比對。",
+                    "(C)看截圖上有沒有藍勾勾或官方帳號就當作可信。",
+                    "(D)把截圖丟到留言區問大家覺得真的假的。"]
+            },
+            //第十二題
+            {
+                q: "一篇文章引用了「研究指出」或「統計顯示」的數字，但未附來源。哪一項檢核最能提升你對內容的判斷力？",
+                a: ["(A)確認作者是否寫得很有自信、語氣很肯定。",
+                    "(B)只要數字看起來合理，就可以相信。",
+                    "(C)查看是否有研究/調查機構名稱、樣本數、方法與原始報告連結。",
+                    "(D)看分享數與按讚數多不多，越多越可信。"]
+            },
+            //第十三題
+            {
+                q: "當貼文使用「緊急！再不轉就來不及」、「不分享就是幫兇」等催促語句時，這通常代表？",
+                a: ["(A)內容一定是真的，才會這麼急。",
+                    "(B)是一種情緒/時間壓力的動員手法，應先停一下再查證。",
+                    "(C)如果是朋友轉的就可信，因為他不會害我。",
+                    "(D)只要我認同立場就可以先轉，之後再補資料。"]
+            },
+            //第十四題
+            {
+                q: "在閱讀爭議事件的整理長文時，你發現作者把「事實敘述」與「個人評論」混在一起。你最好的閱讀策略是?",
+                a: ["(A)只要結論有說服力，過程細節不重要。",
+                    "(B)把文章當作意見文，完全不需要參考。",
+                    "(C)將文中「可查證的事實」逐項拆出來找來源，並把價值判斷視為作者立場。",
+                    "(D)直接看懶人包結論，省時間。"]
+            },
+            //第十五題
+            {
+                q: "當你想避免自己在同溫層裡越陷越深，以下哪個習慣最有效？ ",
+                a: ["(A)把不同意見的人全部封鎖，避免心情受影響。",
+                    "(B)固定追蹤少數立場一致的KOL，資訊比較集中。",
+                    "(C)定期刻意追蹤不同立場/不同媒體來源，並比較同一事件的框架與證據。",
+                    "(D)只要不留言不按讚，就不會被演算法影響。"]
+            },
         ];
 
         let currentQuestionIndex = 0;
+        let totalScore = 0; // 紀錄加權分數總和
+
+        // 結果分數門檻，可依需求修改（由低到高）
+        // 每個項目可同時包含顯示文字與對應說明 (desc)，測驗結果會依分數顯示對應說明文字。
+        const resultThresholds = [
+            { max: 15, text: '高風向敏感型', desc: '你對風向文呈現出高度敏感，遇到情緒化或指控性內容時容易產生強烈反應。\n建議保持查證習慣，尋找多方來源以核實資訊。' },
+            { max: 27, text: '容易受影響型', desc: '你有一定程度會受到社群風向影響，\n建議在分享或評論前先暫停並檢視來源與證據，以免被誤導。' },
+            { max: 36, text: '穩健思辨型', desc: '你通常能保有懷疑與求證的態度，會考慮多方資訊再形成看法。\n可再加強辨識數據來源與作者立場的能力。' },
+            { max: 45, text: '高度警覺型', desc: '你在閱讀網路資訊時相當謹慎、重視查證與證據，能有效避免被風向文左右。\n繼續保持多元資訊來源的習慣。' }
+        ];
+
+        /*
+         說明：在上方的 resultThresholds 陣列中，依「由低到高」的順序列出每個分數上限與對應說明文字。
+         若要調整門檻或說明文字，直接編輯上面的陣列，例如改 { max: 20, text: '低' }。
+         以下函式會根據此陣列自動在結果頁面上產生一段說明，包含每個分數區間與對應文字，方便使用者理解。
+        */
+
+        function renderThresholdInfo() {
+            const container = document.getElementById('threshold-info');
+            if (!container) return;
+
+            let html = '<strong style="color: #FFF8E1;"></strong>';
+            html += '<p style="color: #F5F5DC;"></p>';
+            html += '<ul style="text-align:left; color:#F5F5DC;">';
+
+            for (let i = 0; i < resultThresholds.length; i++) {
+                const max = resultThresholds[i].max;
+                const text = resultThresholds[i].text;
+                const range = (i === 0) ? `0 - ${max}` : `${resultThresholds[i - 1].max + 1} - ${max}`;
+                html += `<li><strong>${range} 分：</strong>${text}</li>`;
+            }
+
+            html += '</ul>';
+            container.innerHTML = html;
+        }
 
         function startQuiz() {
             currentQuestionIndex = 0;
+            totalScore = 0;
+            // 將總題數顯示在進度上
+            const totalEl = document.getElementById('total-q-num');
+            if (totalEl) totalEl.innerText = questions.length;
             showSection('quiz-game');
             renderQuestion();
         }
@@ -251,16 +719,45 @@
             const container = document.getElementById('options-container');
             container.innerHTML = ''; // 清空舊選項
 
+            // 預設權重: 如果未提供 custom defaultOptionWeights，使用 1,2,3,4
+            const globalDefault = [1, 2, 3, 4];
+            const thisDefaults = Array.isArray(defaultOptionWeights) && Array.isArray(defaultOptionWeights[currentQuestionIndex])
+                ? defaultOptionWeights[currentQuestionIndex]
+                : globalDefault;
+
             q.a.forEach((optionText, index) => {
+                const row = document.createElement('div');
+                row.className = 'option-row';
+
                 const btn = document.createElement('button');
                 btn.className = 'quiz-option';
                 btn.innerText = optionText;
-                btn.onclick = () => handleAnswer();
-                container.appendChild(btn);
+
+                // 將權重輸入從畫面上隱藏，但保留 input 值以供內部計分使用
+                const label = document.createElement('label');
+                label.style = 'display:none;'; // 隱藏顯示在 UI 上的權重標籤
+                label.innerText = '權重:';
+
+                const weightInput = document.createElement('input');
+                weightInput.type = 'hidden'; // 將輸入改為隱藏欄位
+                weightInput.className = 'weight-input';
+                // 使用題目預設權重或全域預設（隱藏欄位仍然保有 value）
+                weightInput.value = (thisDefaults[index] !== undefined) ? thisDefaults[index] : globalDefault[index] || 1;
+
+                btn.onclick = () => handleAnswer(row);
+
+                row.appendChild(btn);
+                row.appendChild(label);
+                row.appendChild(weightInput);
+                container.appendChild(row);
             });
         }
 
-        function handleAnswer() {
+        function handleAnswer(optionRow) {
+            const input = optionRow.querySelector('.weight-input');
+            const w = input ? parseFloat(input.value) || 0 : 0;
+            totalScore += w;
+
             if (currentQuestionIndex < questions.length - 1) {
                 currentQuestionIndex++;
                 renderQuestion();
@@ -270,14 +767,29 @@
         }
 
         function showResult() {
+            // 根據分數顯示對應的結果說明，並在結果頁下方顯示分數門檻說明
             showSection('quiz-result');
             const resultText = document.getElementById('result-text');
-            resultText.innerText = "恭喜你完成 10 題測驗！你的資訊識讀能力為：高階防禦者。請繼續保持對資訊的懷疑精神，不輕易被風向左右。";
+
+            // 找到對應的門檻與說明
+            let matched = resultThresholds[resultThresholds.length - 1];
+            for (let i = 0; i < resultThresholds.length; i++) {
+                if (totalScore <= resultThresholds[i].max) {
+                    matched = resultThresholds[i];
+                    break;
+                }
+            }
+
+            // 顯示對應的說明文本；如需包含分數，請在 desc 中加入想要的字句
+            resultText.innerHTML = `<strong style="color:#FFF8E1;">${matched.text}</strong><p style="color:#F5F5DC;">${matched.desc}</p>`;
+
+            // 在結果頁下方渲染分數門檻區塊（包含各區間說明）
+            renderThresholdInfo();
         }
     </script>
 
 
-<!-- 2.AI解答區互動設定 -->
+    <!-- 2.AI解答區互動設定 -->
     <script>
         let clickCount = 0; // 記錄點擊次數
 
@@ -287,38 +799,56 @@
             const msg2 = document.querySelector('.msg-2');
             const msg3 = document.querySelector('.msg-3');
             const msg4 = document.querySelector('.msg-4');
+            const msg5 = document.querySelector('.msg-5');
+            const msg6 = document.querySelector('.msg-6'); // 1. 新增抓取 msg-6
 
             if (clickCount === 1) {
                 // 【第一次按下】：顯示使用者的話
                 msg2.classList.add('show');
-
-                // 改變按鈕文字，提示使用者可以進行下一步
                 this.innerText = "發送";
 
             } else if (clickCount === 2) {
-                // 【第二次按下】：顯示分析過程
+                // 【第二次按下】：顯示分析與最終結果
 
-                // 顯示第三句
+                // 顯示第三句：開始分析
                 setTimeout(() => {
                     msg3.classList.add('show');
                 }, 500);
 
-                // 顯示第四句
+                // 顯示第四句：正在分析中 (閃爍效果那句)
                 setTimeout(() => {
                     msg4.classList.add('show');
                 }, 2000);
 
-                // 完成後停用按鈕
-                this.disabled = true;
-                this.innerText = "發送";
+                // 顯示第五句：分析結果 (2. 新增這段)
+                // 建議延遲時間比第四句長一點，例如 4500ms，讓第四句閃爍一下再出結果
+                setTimeout(() => {
+                    // 如果你想讓「分析中」消失再顯示結果，可以加下面這行：
+                    // msg4.classList.remove('show'); 
+
+                    msg5.classList.add('show');
+                    this.innerText = "發送"; // 改變按鈕文字
+                }, 4500);
+
+                setTimeout(() => {
+                    msg6.classList.add('show');
+
+                    // 等全部跑完，才把按鈕改成分析完成並停用
+                    this.innerText = "發送";
+                    this.disabled = true;
+                }, 6000);
             }
         });
-
     </script>
 
 
 
-<!-- 3.關於我們動畫設定 -->
+
+
+
+
+
+    <!-- 3.關於我們動畫設定 -->
     <script>
 
         const teamCards = document.querySelectorAll('#about .card');
