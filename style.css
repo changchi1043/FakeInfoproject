@@ -113,6 +113,27 @@
      animation: fadeIn 2s ease-out;
  }
 
+ h2 {
+     font-size: 3.5rem;
+     margin-bottom: 20px;
+     border-bottom: 2px solid #ffffff;
+     display: inline-block;
+     padding-bottom: 10px;
+     letter-spacing: 5px;
+     margin-bottom: 30px;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+
+ }
+
+ h4 {
+
+     font-size: 1.5rem;
+     letter-spacing: 5px;
+     margin-bottom: 30px;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+
+ }
+
 
 
 
@@ -157,56 +178,83 @@
 
  /*綜合調整區以上為止*/
 
- /* 測驗題目樣式 */
-
- .progress-bar {
-     font-size: 1.7rem;
-     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+ #quiz-game .btn {
+     background-color: #D4AF37;
+     color: #3E2723;
+     border: none;
+     padding: 12px 25px;
+     font-size: 1.1rem;
      font-weight: bold;
-     color: #570505;
-     margin-bottom: 20px;
- }
-
- .question-text {
-     font-size: 10rem;
-     /* 放大字體，建議 1.3rem ~ 1.5rem 之間 */
-     line-height: 1.8;
-     /* 增加行高，讓兩行文字之間不會太擠 */
-     font-weight: bold;
-     /* 設為粗體，讓它更像「題目」 */
-     color: #FFFFFF;
-     /* 改為純白或米色 (#F5F5DC)，在深色背景更清晰 */
-     text-align: center;
-     /* 居中對齊 */
-     margin: 20px auto;
-     /* 增加上下間距 */
-     max-width: 80%;
-     /* 限制寬度，避免文字貼到邊緣，比較好閱讀 */
- }
-
- .quiz-option {
-     font-size: 1.2rem;
-     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
-     display: block;
-     width: 100%;
-     padding: 15px;
-     margin: 10px 0;
-     background: #ffffff;
-     border: 1px solid #F5F5DC;
-     color: #4E342E;
-     text-align: left;
+     border-radius: 8px;
      cursor: pointer;
+     margin-top: 20px;
+     transition: all 0.3s ease;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
  }
 
- .quiz-option:hover {
-     background: #F5F5DC;
+ #quiz-game .btn:hover {
+     background-color: #F5F5DC;
+     transform: scale(1.05);
  }
 
 
+ #quiz-game .progress-bar {
+     text-align: center;
+     font-weight: bold;
+     font-size: 1.1rem;
+     color: #301602;
+     margin-bottom: 20px;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+ }
 
+ #quiz-game .post-card {
+     background-color: #FFF8E1;
+     color: #333;
+     padding: 25px;
+     border-radius: 10px;
+     font-size: 1.2rem;
+     line-height: 1.8;
+     margin-bottom: 20px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+     border-left: 6px solid #D4AF37;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+ }
 
+ /* 標籤：顯示當前主題 */
+ #quiz-game .topic-badge {
+     display: inline-block;
+     background-color: #8D6E63;
+     color: white;
+     padding: 4px 10px;
+     border-radius: 20px;
+     font-size: 1.2rem;
+     margin-bottom: 10px;
+ }
 
+ /* 風向文黃底高亮特效 */
+ #quiz-game .highlight {
+     background-color: #FFD700;
+     color: #111;
+     font-weight: bold;
+     padding: 2px 6px;
+     border-radius: 4px;
+     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+ }
 
+ /* 解析說明區塊 */
+ #quiz-game .explanation-box {
+     display: none;
+     /* 解析預設隱藏 */
+     background-color: rgba(255, 255, 255, 0.1);
+     border: 1px dashed #D4AF37;
+     padding: 15px;
+     border-radius: 8px;
+     margin-top: 15px;
+     color: #F5F5DC;
+     line-height: 1.6;
+ }
 
 
  /* AI解答區css調整 */
@@ -416,6 +464,27 @@
      letter-spacing: normal;
      /* 【修改】拿掉額外的字距，讓文字更緊湊 */
  }
+
+ /* --- 附加網頁連結按鈕樣式 --- */
+ #ai-zone .news-link {
+    display: inline-block;
+    margin-top: 8px; /* 與上面的文字保持一點距離 */
+    padding: 6px 12px;
+    background-color: #D4AF37; /* 使用你們主題的金色 */
+    color: #3E2723;            /* 深咖啡色文字 */
+    text-decoration: none;     /* 拿掉底線 */
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+ #ai-zone .news-link:hover {
+    background-color: #A67B5B; /* 滑過時變成較深的咖啡色 */
+    color: #FFF8E1;            /* 文字反白 */
+    transform: translateY(-2px); /* 滑過時微微上浮 */
+}
 
  /*以上為止*/
 

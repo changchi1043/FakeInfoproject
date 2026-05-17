@@ -31,30 +31,49 @@
 
         <!-- 心理測驗簡介 -->
         <section id="quiz-intro">
-            <h2 class="content-title">風向文判斷力測驗<br></h2>
-            <p>準備好測試你的判斷力了嗎⏱︎<br>
-                透過15個測驗題，看看你面對網路風向文的反應如何。<br>
-                依照直覺回答，完成後會顯示你的等級囉~</p>
+            <h2>你，被帶風向了嗎⁉️</h2>
+            <p style="text-align: center; font-size: 1.2rem; line-height: 1.8;">
+                進入本網站之前,我們將為您準備 <strong>3 篇</strong>短文。<br>
+                您需要在短時間內判斷該文章是否有<strong>「帶風向」</strong>之意圖。<br>
+
+            <h4>準備好了嗎 讓我們開始吧💣</h4>
+
+            </p>
             <button class="btn" onclick="startQuiz()">測驗開始</button>
         </section>
 
         <!-- 測驗題目區 -->
         <section id="quiz-game">
-            <div class="progress-bar">問題 <span id="current-q-num">1</span> / <span id="total-q-num">10</span></div>
-            <h3 id="question-text">題目載入中...</h3>
-            <div id="options-container">
-                <!-- 選項會由 JS 動態生成 -->
+            <div class="progress-bar">問題 <span id="current-q-num">1</span> / <span id="total-q-num">3</span></div>
+
+            <div class="post-card">
+                <span class="topic-badge" id="post-topic">主題標籤</span>
+                <div id="post-content">
+                </div>
             </div>
+
+            <button class="btn" id="analyze-btn" onclick="revealAnswer()">🔍 看破風向：解析這篇文章</button>
+
+            <div class="explanation-box" id="explanation-box">
+                <strong>💡 文章解析 💡</strong><br>
+                <span id="explanation-text"></span>
+            </div>
+
+            <button class="btn" id="next-btn" style="display: none; margin-top: 20px;" onclick="nextQuestion()">前往下一題
+                ➔</button>
         </section>
+
 
         <!-- 測驗結果頁 -->
         <section id="quiz-result">
-            <h2 class="content-title">測驗結果</h2>
-            <p id="result-text">正在計算結果...</p>
-            <!-- 分數門檻說明：測驗結束後顯示在結果說明下方 -->
-            <div id="threshold-info" style="text-align:left; max-width:800px; margin: 20px auto 0; color: #F5F5DC;">
-            </div>
-            <button class="btn" onclick="showSection('home')">回到主頁</button>
+            <h2 class="content-title">測驗結束</h2>
+            <p style="text-align: center; font-size: 1.2rem;">
+                恭喜您已經完成三題測驗💯<br>
+                是不是覺得風向文其實很難判斷呢?<br>
+                別擔心💖就讓我們帶您進入網站<br>
+                一起探索風向文這趟奇妙旅程吧!
+            </p>
+            <button class="btn" onclick="location.reload()">再測一次</button>
         </section>
 
         <!--風向文介紹-->
@@ -428,7 +447,9 @@
             <div class="chat-container">
                 <div class="chat-messages">
                     <div class="message bot msg-1">你好! 我是風向文AI小助手 把你想檢查的文章丟給我看看吧~</div>
-                    <div class="message user msg-2">小助手你好 我想分析這篇文章</div>
+                    <div class="message user msg-2">小助手你好 我想分析這篇文章<br>
+                        <a href="fake-news.html" target="_blank" class="news-link">🔗 Threads 熱門趨勢篇 ⁉️</a>
+                    </div>
                     <div class="message user msg-3">
                         «Threads 熱門趨勢篇 ⁉️»
                         某大勢女團成員親哥哥遭週刊爆料, 妻子指控家暴及強迫性行為, 隨後妻公開傷勢照片，目前正在網路上瘋傳
@@ -512,7 +533,7 @@
 
     </div>
 
-    <!--  1.測驗區動畫設定-->
+    <!--分頁指定請勿擅自更動-->
     <script>
 
         function showSection(id) {
@@ -522,269 +543,93 @@
             window.scrollTo(0, 0);
         }
 
-        // 測驗題目數據
-        // 注意：每個問題的 `a` 陣列代表選項文字，選項的預設權重會在渲染時顯示並可由使用者調整。
-        //
-        // 如何自定每個選項的分數：
-        // - 預設每個選項的權重為 1,2,3,4（從第一個選項到第四個選項）。
-        // - 若想要硬編碼每題每選項的預設分數，可改寫下面的 `defaultOptionWeights` 變數
-        //   為一個二維陣列，例如: [[4,3,2,1], [1,2,3,4], ...]，陣列長度需與題目數相同。
-        //
-        // 如何自定最終結果的分數表：
-        // - 修改下方 `resultThresholds` 陣列（由低到高），每個物件定義該分數上限與對應回傳的文字。
-        // - 範例：{ max: 20, text: '低' }, { max: 40, text: '中' }, { max: Infinity, text: '高' }
+    </script>
+    <!--分頁設定請勿擅自更動-->
 
-        // 預設每題每選項的權重 (若需為每題自訂預設值，請改寫為二維陣列，見上方註解)
-        const defaultOptionWeights = [
-            [3, 2, 0, 1], [3, 0, 1, 1], [0, 0, 1, 3], [0, 1, 2, 3], [3, 0, 2, 2],
-            [3, 0, 1, 3], [3, 1, 1, 0], [1, 0, 3, 0], [1, 0, 3, 0], [3, 2, 0, 1],
-            [0, 3, 1, 2], [1, 0, 3, 0], [0, 3, 1, 0], [0, 1, 3, 0], [0, 1, 3, 2]
-        ]; // null 表示使用全域預設 [1,2,3,4]
+    <!--  1.測驗區動畫題庫資料設定-->
+    <script>
 
-        const questions = [
-            //第一題
+        const quizData = [
             {
-                q: "當你在社群平台上看到一篇情緒激昂、指責某個公眾人物的熱門貼文時，\n你的第一反應通常是什麼？",
-                a: ["(A) 先冷靜下來，尋找該事件是否有其他視角的報導或說明。",
-                    "(B) 先查看留言區，看看大多數網友的意見是什麼。",
-                    "(C) 立刻感到憤怒並點讚或轉發支持。",
-                    "(D) 直接忽視，反正網路上的消息多半是假的。"]
+                topic: "韓國偶像圈消息",
+                original: "最近看到某大站姐推特發長篇文，說OO近期不常上DM聊天是因為與其他團女藝人私下約會，站姐放話說要將照片和影片公開，上來問大家我是不是該退粉了...",
+                highlighted: "最近看到<span class='highlight'>某大站姐推特發長篇文</span>，說OO近期不常上DM聊天<span class='highlight'>是因為與其他團女藝人私下約會</span>，站姐<span class='highlight'>放話說要將照片和影片公開</span>，上來問大家<span class='highlight'>我是不是該退粉了...</span>",
+                explanation: "這是典型的「粉圈恐慌型」風向文。貼文中以未指明公開站姐原貼文方式，以「放話公開證據」製造懸念與焦慮（卻不立刻給出實錘）。最後用「是不是該退粉」引發粉絲的從眾效應，試圖在真相未明前帶動抵制風向。"
             },
-            //第二題
             {
-                q: "關於「風向文」的特徵，下列何者最不具備操弄意圖？",
-                a: ["(A) 內文引用了多方查證的數據並標註了完整原始連結。",
-                    "(B) 大量使用「所有人都知道」、「不轉發就沒良心」等道德綁架詞彙。",
-                    "(C) 內文只有單方面的指控，且缺乏具體時間地點。",
-                    "(D) 標題極其聳動且使用大量驚嘆號。"]
+                topic: "職場世代對立", // 標題稍微改為「世代對立」會更有衝突感
+                original: "現在年輕人是不是都流行00後整頓市場了？公司自從新聘員工之後，每個態度都像爛草莓一樣碰一下就跳起來，各位評評理，下馬威才是真正的職場生態吧！",
+                highlighted: "現在年輕人是不是都流行<span class='highlight'>00後整頓市場</span>了？公司自從新聘員工之後，每個態度都像<span class='highlight'>爛草莓一樣</span>碰一下就跳起來，<span class='highlight'>各位評評理，下馬威才是真正的職場生態吧！</span>",
+                explanation: "這是一篇典型的「製造世代對立」風向文。刻意使用「00後整頓市場」、「爛草莓」等刻板印象與貶抑性標籤來攻擊特定族群。最後用「各位評評理」煽動網友情緒，並將不合理的「下馬威」包裝成理所當然的職場生態，意圖引發兩極化的爭吵以賺取流量。"
             },
-            //第三題
             {
-                q: "當你發現一篇貼文的觀點與你的既有認知完全一致時，你該如何保持警覺？",
-                a: ["(A) 不必查證，因為認同感就是最好的證明。",
-                    "(B) 轉發給志同道合的朋友，加強這個論點。",
-                    "(C) 確認這就是真相，因為它符合邏輯。",
-                    "(D) 自省是否因為「確認偏誤」而過快接受該資訊。"]
-            },
-            //第四題
-            {
-                q: "在判斷一篇長文的風向時，觀察「留言區」的正確態度為何？",
-                a: ["(A)留言數最多的意見就是主流民意，值得採信。",
-                    "(B)只看按讚數最高的留言即可。",
-                    "(C)留言區的內容完全不具參考價值，應直接跳過。",
-                    "(D)觀察是否有大量重複、格式相近的帳號在洗版。"]
-            },
-            //第五題
-            {
-                q: "若一篇貼文使用了「匿名爆料」或「內部人士透露」，\n但沒有提供任何實體證據，這通常意味著？",
-                a: ["(A)該訊息的可信度極低，可能是刻意製造的謠言。",
-                    "(B)只要有很多人轉發，這則消息就有很高的可信度。",
-                    "(C)爆料者為了保密，所以不能提供證據，這很合理。",
-                    "(D)這是一則極具價值的獨家消息。"]
-            },
-            //第六題
-            {
-                q: "所謂「回聲筒效應」如何影響你的閱讀能力?",
-                a: ["(A)它讓你只接收到單一觀點，逐漸喪失批判思考的能力。",
-                    "(B)它對個人判斷力沒有負面影響。",
-                    "(C)它能幫助你過濾掉沒用的雜訊。",
-                    "(D)它讓你接觸到更專業、更深入的同類資訊。"]
-            },
-            //第七題
-            {
-                q: "在閱讀公共議題的文章時，發現作者使用了強烈的「非黑即白」二分法標籤，這通常是？",
-                a: ["(A)為了讓讀者快速理解複雜問題的效率手法。",
-                    "(B)這是正確的，因為真理通常只有一個答案。",
-                    "(C)作者立場堅定、不畏權勢的表現。",
-                    "(D)一種情緒動員的手段，意圖簡化議題並激發敵意。",]
-            },
-            //第八題
-            {
-                q: "當某個事件出現「反轉」新聞時，你過去曾有的反應中，\n哪一種代表你具備良好的自我修正能力？",
-                a: ["(A)分析自己為何會被前一則資訊誤導，並吸收新證據修正觀點。",
-                    "(B)感到尷尬並假裝自己從沒相信過之前的資訊。",
-                    "(C)從此不再關心任何新聞，覺得反正都會反轉。",
-                    "(D)認為反轉的新聞才是假消息，堅持原本的看法。"]
-            },
-            //第九題
-            {
-                q: "演算法如何加劇你被帶風向的風險？",
-                a: ["(A)演算法只跟廣告有關，不影響新聞觀看。",
-                    "(B)演算法會隨機推送內容，增加多元性。",
-                    "(C)它會精準推送你感興趣、甚至偏激的內容，讓你以為全世界都這麼想。",
-                    "(D)演算法會幫我們過濾掉所有不實資訊。"]
-            },
-            //第十題
-            {
-                q: "要提升「風向文閱讀能力」，日常生活中最有效的練習是？",
-                a: ["(A)針對同一事件，主動尋找不同立場的觀點進行對比。",
-                    "(B)只閱讀大型權威媒體報導。",
-                    "(C)多跟想法一致的朋友討論。",
-                    "(D)完全不看網路上任何有主觀評論的文章。"]
-            },
-            //第十一題
-            {
-                q: "當你看到一篇以「截圖」呈現的爆料貼文（對話截圖、聊天紀錄等），但沒有提供原始連結或完整脈絡時，你最好的做法是？",
-                a: ["(A)先轉發，等有人出來澄清再說。",
-                    "(B)請對方提供原始貼文/完整上下文，並用關鍵字搜尋其他來源比對。",
-                    "(C)看截圖上有沒有藍勾勾或官方帳號就當作可信。",
-                    "(D)把截圖丟到留言區問大家覺得真的假的。"]
-            },
-            //第十二題
-            {
-                q: "一篇文章引用了「研究指出」或「統計顯示」的數字，但未附來源。哪一項檢核最能提升你對內容的判斷力？",
-                a: ["(A)確認作者是否寫得很有自信、語氣很肯定。",
-                    "(B)只要數字看起來合理，就可以相信。",
-                    "(C)查看是否有研究/調查機構名稱、樣本數、方法與原始報告連結。",
-                    "(D)看分享數與按讚數多不多，越多越可信。"]
-            },
-            //第十三題
-            {
-                q: "當貼文使用「緊急！再不轉就來不及」、「不分享就是幫兇」等催促語句時，這通常代表？",
-                a: ["(A)內容一定是真的，才會這麼急。",
-                    "(B)是一種情緒/時間壓力的動員手法，應先停一下再查證。",
-                    "(C)如果是朋友轉的就可信，因為他不會害我。",
-                    "(D)只要我認同立場就可以先轉，之後再補資料。"]
-            },
-            //第十四題
-            {
-                q: "在閱讀爭議事件的整理長文時，你發現作者把「事實敘述」與「個人評論」混在一起。你最好的閱讀策略是?",
-                a: ["(A)只要結論有說服力，過程細節不重要。",
-                    "(B)把文章當作意見文，完全不需要參考。",
-                    "(C)將文中「可查證的事實」逐項拆出來找來源，並把價值判斷視為作者立場。",
-                    "(D)直接看懶人包結論，省時間。"]
-            },
-            //第十五題
-            {
-                q: "當你想避免自己在同溫層裡越陷越深，以下哪個習慣最有效？ ",
-                a: ["(A)把不同意見的人全部封鎖，避免心情受影響。",
-                    "(B)固定追蹤少數立場一致的KOL，資訊比較集中。",
-                    "(C)定期刻意追蹤不同立場/不同媒體來源，並比較同一事件的框架與證據。",
-                    "(D)只要不留言不按讚，就不會被演算法影響。"]
-            },
+                topic: "醫療與健康資訊",
+                original: "內部醫師爆料！醫院開的感冒藥其實都有嚴重的副作用，會導致免疫力永久下降。千萬別再傻傻吃西藥了！中醫權威推薦這款『百草還原丹』，純天然無副作用，一天見效，趕快分享給身邊的親友救他們一命！",
+                highlighted: "<span class='highlight'>內部醫師爆料！</span>醫院開的感冒藥其實都有嚴重的副作用，會導致<span class='highlight'>免疫力永久下降</span>。<span class='highlight'>千萬別再傻傻吃西藥了！</span>中醫權威推薦這款『百草還原丹』，純天然無副作用，一天見效，<span class='highlight'>趕快分享給身邊的親友救他們一命！</span>",
+                explanation: "這是標準的健康恐嚇型農場文。利用「內部爆料、永久下降」製造恐慌，貶低常規醫療，藉機推銷特定產品。最後用「分享救人一命」進行情緒勒索，騙取大量轉發。"
+            }
         ];
 
         let currentQuestionIndex = 0;
-        let totalScore = 0; // 紀錄加權分數總和
 
-        // 結果分數門檻，可依需求修改（由低到高）
-        // 每個項目可同時包含顯示文字與對應說明 (desc)，測驗結果會依分數顯示對應說明文字。
-        const resultThresholds = [
-            { max: 15, text: '高風向敏感型', desc: '你對風向文呈現出高度敏感，遇到情緒化或指控性內容時容易產生強烈反應。\n建議保持查證習慣，尋找多方來源以核實資訊。' },
-            { max: 27, text: '容易受影響型', desc: '你有一定程度會受到社群風向影響，\n建議在分享或評論前先暫停並檢視來源與證據，以免被誤導。' },
-            { max: 36, text: '穩健思辨型', desc: '你通常能保有懷疑與求證的態度，會考慮多方資訊再形成看法。\n可再加強辨識數據來源與作者立場的能力。' },
-            { max: 45, text: '高度警覺型', desc: '你在閱讀網路資訊時相當謹慎、重視查證與證據，能有效避免被風向文左右。\n繼續保持多元資訊來源的習慣。' }
-        ];
-
-        /*
-         說明：在上方的 resultThresholds 陣列中，依「由低到高」的順序列出每個分數上限與對應說明文字。
-         若要調整門檻或說明文字，直接編輯上面的陣列，例如改 { max: 20, text: '低' }。
-         以下函式會根據此陣列自動在結果頁面上產生一段說明，包含每個分數區間與對應文字，方便使用者理解。
-        */
-
-        function renderThresholdInfo() {
-            const container = document.getElementById('threshold-info');
-            if (!container) return;
-
-            let html = '<strong style="color: #FFF8E1;"></strong>';
-            html += '<p style="color: #F5F5DC;"></p>';
-            html += '<ul style="text-align:left; color:#F5F5DC;">';
-
-            for (let i = 0; i < resultThresholds.length; i++) {
-                const max = resultThresholds[i].max;
-                const text = resultThresholds[i].text;
-                const range = (i === 0) ? `0 - ${max}` : `${resultThresholds[i - 1].max + 1} - ${max}`;
-                html += `<li><strong>${range} 分：</strong>${text}</li>`;
-            }
-
-            html += '</ul>';
-            container.innerHTML = html;
+        // 切換顯示的區塊
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
         }
 
+        // 開始測驗
         function startQuiz() {
             currentQuestionIndex = 0;
-            totalScore = 0;
-            // 將總題數顯示在進度上
-            const totalEl = document.getElementById('total-q-num');
-            if (totalEl) totalEl.innerText = questions.length;
             showSection('quiz-game');
-            renderQuestion();
+            loadQuestion();
         }
 
-        function renderQuestion() {
-            const q = questions[currentQuestionIndex];
+        // 載入題目
+        function loadQuestion() {
+            const qData = quizData[currentQuestionIndex];
+
+            // 更新進度條
             document.getElementById('current-q-num').innerText = currentQuestionIndex + 1;
-            document.getElementById('question-text').innerText = q.q;
 
-            const container = document.getElementById('options-container');
-            container.innerHTML = ''; // 清空舊選項
+            // 重置畫面狀態：顯示原始文字，隱藏解析與下一題按鈕
+            document.getElementById('post-topic').innerText = qData.topic;
+            document.getElementById('post-content').innerHTML = qData.original;
 
-            // 預設權重: 如果未提供 custom defaultOptionWeights，使用 1,2,3,4
-            const globalDefault = [1, 2, 3, 4];
-            const thisDefaults = Array.isArray(defaultOptionWeights) && Array.isArray(defaultOptionWeights[currentQuestionIndex])
-                ? defaultOptionWeights[currentQuestionIndex]
-                : globalDefault;
-
-            q.a.forEach((optionText, index) => {
-                const row = document.createElement('div');
-                row.className = 'option-row';
-
-                const btn = document.createElement('button');
-                btn.className = 'quiz-option';
-                btn.innerText = optionText;
-
-                // 將權重輸入從畫面上隱藏，但保留 input 值以供內部計分使用
-                const label = document.createElement('label');
-                label.style = 'display:none;'; // 隱藏顯示在 UI 上的權重標籤
-                label.innerText = '權重:';
-
-                const weightInput = document.createElement('input');
-                weightInput.type = 'hidden'; // 將輸入改為隱藏欄位
-                weightInput.className = 'weight-input';
-                // 使用題目預設權重或全域預設（隱藏欄位仍然保有 value）
-                weightInput.value = (thisDefaults[index] !== undefined) ? thisDefaults[index] : globalDefault[index] || 1;
-
-                btn.onclick = () => handleAnswer(row);
-
-                row.appendChild(btn);
-                row.appendChild(label);
-                row.appendChild(weightInput);
-                container.appendChild(row);
-            });
+            document.getElementById('analyze-btn').style.display = 'block';
+            document.getElementById('explanation-box').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'none';
         }
 
-        function handleAnswer(optionRow) {
-            const input = optionRow.querySelector('.weight-input');
-            const w = input ? parseFloat(input.value) || 0 : 0;
-            totalScore += w;
+        // 點擊看破風向：顯示黃底標註與解析
+        function revealAnswer() {
+            const qData = quizData[currentQuestionIndex];
 
-            if (currentQuestionIndex < questions.length - 1) {
-                currentQuestionIndex++;
-                renderQuestion();
+            // 將貼文內容替換為帶有 <span class='highlight'> 的版本
+            document.getElementById('post-content').innerHTML = qData.highlighted;
+
+            // 顯示 AI 解析說明
+            document.getElementById('explanation-text').innerText = qData.explanation;
+            document.getElementById('explanation-box').style.display = 'block';
+
+            // 隱藏「看破風向」按鈕，顯示「下一題」按鈕
+            document.getElementById('analyze-btn').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'block';
+
+            // 如果是最後一題，將下一題按鈕改為「查看結果」
+            if (currentQuestionIndex === quizData.length - 1) {
+                document.getElementById('next-btn').innerText = "查看測驗結果 ➔";
+            }
+        }
+
+        // 前往下一題
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
             } else {
-                showResult();
+                showSection('quiz-result');
             }
-        }
-
-        function showResult() {
-            // 根據分數顯示對應的結果說明，並在結果頁下方顯示分數門檻說明
-            showSection('quiz-result');
-            const resultText = document.getElementById('result-text');
-
-            // 找到對應的門檻與說明
-            let matched = resultThresholds[resultThresholds.length - 1];
-            for (let i = 0; i < resultThresholds.length; i++) {
-                if (totalScore <= resultThresholds[i].max) {
-                    matched = resultThresholds[i];
-                    break;
-                }
-            }
-
-            // 顯示對應的說明文本；如需包含分數，請在 desc 中加入想要的字句
-            resultText.innerHTML = `<strong style="color:#FFF8E1;">${matched.text}</strong><p style="color:#F5F5DC;">${matched.desc}</p>`;
-
-            // 在結果頁下方渲染分數門檻區塊（包含各區間說明）
-            renderThresholdInfo();
         }
     </script>
 

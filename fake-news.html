@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,13 +22,14 @@
 
         /* 假新聞網站的標頭 */
         header {
-            background-color: #e60000; /* 聳動的紅色 */
+            background-color: #e60000;
+            /* 聳動的紅色 */
             color: white;
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         header h1 {
@@ -48,7 +50,7 @@
             background: white;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* 標籤與發布時間 */
@@ -84,7 +86,7 @@
             color: #222;
         }
 
-        /* 假裝有圖片的區塊 */
+        /* 假裝有圖片的區塊
         .fake-image-placeholder {
             width: 100%;
             height: 300px;
@@ -97,6 +99,56 @@
             margin-bottom: 20px;
             border-radius: 4px;
             border: 1px dashed #aaa;
+        }  */
+
+
+        /* --- 💡 圖片區塊的 CSS 特效 (新增/替換原本的 fake-image-placeholder) --- */
+
+        /* 1. 圖片容器：設定大小並隱藏超出範圍的內容 */
+        .image-wrapper {
+            width: 100%;
+            height: 350px;
+            background-color: #333;
+            /* 模糊時露出底色 */
+            margin-bottom: 25px;
+            border-radius: 4px;
+            position: relative;
+            /* 為了讓文字疊在圖片上 */
+            overflow: hidden;
+            /* 確保模糊效果不會跑出來 */
+            border: 1px solid #777;
+        }
+
+        /* 2. 核心特效：將真實圖片極度模糊化 */
+        .sensitive-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 確保圖片填滿容器不變形 */
+
+            /* ⚠️ 最關鍵的屬性：模糊特效，數值越大越模糊 */
+            filter: blur(10px) grayscale(30%);
+        }
+
+        /* 3. 浮在模糊圖片上的警告文字 (Overlay) */
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            /* 幫圖片加一層黑半透明遮罩 */
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 20px;
+            box-sizing: border-box;
+            line-height: 1.6;
         }
 
         /* 騙點擊的按鈕 */
@@ -124,9 +176,20 @@
 
         /* 按鈕閃爍特效，吸引點擊 */
         @keyframes pulse-btn {
-            0% { transform: scale(1); box-shadow: 0 4px 6px rgba(230, 0, 0, 0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(230, 0, 0, 0.6); }
-            100% { transform: scale(1); box-shadow: 0 4px 6px rgba(230, 0, 0, 0.3); }
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 6px rgba(230, 0, 0, 0.3);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 15px rgba(230, 0, 0, 0.6);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 6px rgba(230, 0, 0, 0.3);
+            }
         }
 
         /* 假留言區 */
@@ -136,7 +199,7 @@
             padding: 20px;
             border-radius: 8px;
         }
-        
+
         .comments-section h3 {
             border-bottom: 2px solid #e60000;
             padding-bottom: 10px;
@@ -148,14 +211,18 @@
             padding-bottom: 15px;
             border-bottom: 1px solid #ddd;
         }
-        .fake-comment strong { color: #3b5998; }
+
+        .fake-comment strong {
+            color: #3b5998;
+        }
     </style>
 </head>
+
 <body>
 
     <!-- 假新聞網站標頭 -->
     <header>
-        <h1>🔥 娛樂焦點快訊</h1>
+        <h1>🔥 焦點快訊</h1>
         <div class="nav-links">最新 | 熱門 | 八卦 | 爆料</div>
     </header>
 
@@ -163,7 +230,7 @@
         <!-- 文章標籤與時間 -->
         <div class="meta-info">
             <span class="tag">Threads 熱門趨勢篇 ⁉️</span>
-            <span>發布時間：剛剛 | 觀看次數：145,289</span>
+            <span>發布時間：2026/05/01 | 觀看次數：670,587</span>
         </div>
 
         <!-- 聳動標題 -->
@@ -171,13 +238,17 @@
 
         <!-- 文章內容 -->
         <div class="article-content">
-            <p><strong>【娛樂中心 / 綜合報導】</strong></p>
-            
+            <p><strong>【韓國流行娛樂中心 / 綜合報導】</strong></p>
+
             <p>近日網路上瘋傳一則震驚演藝圈的消息！某大勢女團成員的親哥哥遭週刊踢爆，妻子出面淚訴指控其家暴及強迫性行為。隨後，疑似妻子的帳號更在網路上公開了令人心驚的傷勢照片，目前該組照片正在各大社群論壇瘋狂轉發。</p>
 
             <!-- 故意放一個假圖片區塊增加真實感 -->
-            <div class="fake-image-placeholder">
-                ⚠️ 畫面過於血腥/敏感，請點擊下方按鈕解鎖觀看
+            <div class="image-wrapper">
+                <img src="hit.jpg" class="sensitive-image" alt="敏感內容示意圖">
+
+                <div class="image-overlay">
+                    ⚠️ 內容可能引起不適請點擊下方按鈕觀看⚠️
+                </div>
             </div>
 
             <p>事情還沒結束！除了家暴疑雲，該名哥哥更被另指控私下與知名女直播主有著長期的「不良交易」。據知情人士透露，兩人之間露骨的對話內容已經全數曝光，內容令人咋舌...</p>
@@ -186,23 +257,25 @@
         <!-- 誘導點擊的按鈕 (核心手法) -->
         <div class="clickbait-btn-container">
             <p style="color: #666; margin-bottom: 10px; font-size: 0.9rem;">(內容包含未刪減對話與照片，建議斟酌觀看)</p>
-            <a href="#" class="clickbait-btn" onclick="alert('【防禦力測試】\n您差點就點擊了典型的誘餌連結！這正是風向文收集流量與散播恐慌的手法喔！'); return false;">詳細內容請繼續往下閱讀......</a>
+            <a href="#" class="clickbait-btn"
+                onclick="alert('贊助麵包不然就換我把你coding在這篇文章當範例'); return false;">詳細內容請繼續往下閱讀......</a>
         </div>
 
         <!-- 帶風向的假留言區 -->
         <div class="comments-section">
             <h3>熱門留言</h3>
             <div class="fake-comment">
-                <strong>@KpopFans_99:</strong> 天啊太噁心了吧！如果是真的，那個女團成員不用出來道歉嗎？退團啦！
+                <strong>@Kpop_info:</strong>韓網都已經燒成這樣脆網友怎麼現在才看到哈哈哈
             </div>
             <div class="fake-comment">
-                <strong>@JusticeNow:</strong> 早就覺得她哥哥看起來怪怪的，這下終於原形畢露了，坐等公司聲明！
+                <strong>@bpbphater:</strong>不意外這女的平常就不是什麼好東西，哥哥會這樣不意外，傳給那些腦粉們看看吧!
             </div>
             <div class="fake-comment">
-                <strong>@GossipKing:</strong> 跪求對話紀錄無碼版！有人有備份嗎？私訊感恩！
+                <strong>@ryupei:</strong>我有找到原圖想看的底下留言加一
             </div>
         </div>
     </div>
 
 </body>
+
 </html>
