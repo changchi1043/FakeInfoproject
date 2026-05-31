@@ -467,24 +467,31 @@
 
  /* --- 附加網頁連結按鈕樣式 --- */
  #ai-zone .news-link {
-    display: inline-block;
-    margin-top: 8px; /* 與上面的文字保持一點距離 */
-    padding: 6px 12px;
-    background-color: #D4AF37; /* 使用你們主題的金色 */
-    color: #3E2723;            /* 深咖啡色文字 */
-    text-decoration: none;     /* 拿掉底線 */
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
+     display: inline-block;
+     margin-top: 8px;
+     /* 與上面的文字保持一點距離 */
+     padding: 6px 12px;
+     background-color: #D4AF37;
+     /* 使用你們主題的金色 */
+     color: #3E2723;
+     /* 深咖啡色文字 */
+     text-decoration: none;
+     /* 拿掉底線 */
+     border-radius: 6px;
+     font-size: 0.9rem;
+     font-weight: bold;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     transition: all 0.3s ease;
+ }
 
  #ai-zone .news-link:hover {
-    background-color: #A67B5B; /* 滑過時變成較深的咖啡色 */
-    color: #FFF8E1;            /* 文字反白 */
-    transform: translateY(-2px); /* 滑過時微微上浮 */
-}
+     background-color: #A67B5B;
+     /* 滑過時變成較深的咖啡色 */
+     color: #FFF8E1;
+     /* 文字反白 */
+     transform: translateY(-2px);
+     /* 滑過時微微上浮 */
+ }
 
  /*以上為止*/
 
@@ -734,177 +741,286 @@
  /*以上為止*/
 
  /* 常見手法 css*/
- /* --- 1. 手法清單區塊 (精簡版) --- */
+
+ /* --- 1. 大外框與標題 (透明底，融入漸層背景) --- */
  #technique {
-     max-width: 650px;
-     margin: 20px auto;
-     padding: 20px;
+    box-sizing: border-box;
+    width: 92vw; /* ✅ 直接使用視窗寬度 (viewport width) 的 92%，無視 800px 限制 */
+    max-width: 1300px; /* ✅ 設定展開的最大極限，看起來最舒服 */
+    
+    /* ✅ 突破外層容器限制的神奇魔法：強制相對於螢幕置中 */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+#technique .content-title {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 40px auto;
+    text-align: center;
+    color: #3E2723; /* 這是文字的顏色 */
+    border-bottom: 2px solid #3E2723; /* ✅ 新增這行：將底線改為深咖啡色 (也可以換成你想要的色碼) */
+}
+
+/* 分隔線 */
+#technique hr {
+    margin: 50px 0;
+    border: 0;
+    border-top: 1px solid #000000;
+}
+
+/* --- 2. 雙欄佈局 (拉開距離並縮小空隙) --- */
+.technique-layout {
+    display: flex;
+    justify-content: space-between; /* 強制將左右兩塊推向兩端 */
+    gap: 70px;
+    align-items: flex-start;
+}
+
+ /* ✅ 把白底、圓角和陰影移到左邊的主文章區塊 */
+ .technique-main {
+     flex: 1;
+     min-width: 0;
      background-color: #ffffff;
-     border-radius: 12px;
-     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+     padding: 40px 40px;
+     border-radius: 16px;
+     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
      color: #333;
-     /* 確保清單文字也是深色 */
-     text-align: left;
-     /* 修正原本繼承 container 的置中 */
  }
 
+ .technique-sidebar {
+     width: 180px;
+     /* ✅ 從原本的 380px 縮小到 280px，把 100px 還給文章 */
+     flex-shrink: 0;
+     position: sticky;
+     top: 90px;
+ }
+
+ /* --- 3. 手法清單區塊 --- */
  #technique .technique-list {
      list-style: none;
      padding: 0;
  }
 
  #technique .technique-list li {
-     padding: 12px;
+     padding: 18px 15px;
      border-bottom: 1px solid #eee;
+     font-size: 1.7rem;
+     line-height: 1.6;
  }
 
  #technique .active-item {
-     background-color: #f8f9fa;
-     border-left: 4px solid #ff4757;
+     background-color: #e8dfbf;
+     border-left: 5px solid #ff4757;
      font-weight: bold;
  }
 
  #technique .analyze-toggle {
-     margin-left: 10px;
-     padding: 4px 10px;
-     font-size: 12px;
+     margin-left: 15px;
+     padding: 8px 14px;
+     font-size: 1.05rem;
      cursor: pointer;
      background: #ff4757;
      color: white;
      border: none;
-     border-radius: 4px;
+     border-radius: 6px;
      transition: 0.2s;
+     vertical-align: middle;
  }
 
  #technique .analyze-toggle:hover {
      background: #e63946;
  }
 
- /* --- 2. 模擬貼文區塊 (修正間距與顏色) --- */
+ /* --- 4. 模擬貼文區塊 --- */
  #technique .mock-post-container {
-     margin-top: 25px;
+     box-sizing: border-box;
+     margin-top: 30px;
+     margin-bottom: 70px;
      border: 1px solid #e0e0e0;
-     border-radius: 8px;
-     padding: 20px;
-     /* 增加內距 */
+     border-radius: 12px;
+     padding: 35px 30px;
      background-color: #ffffff;
-
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
  }
 
  #technique .post-header {
      display: flex;
      align-items: center;
-     margin-bottom: 15px;
+     margin-bottom: 20px;
  }
 
  #technique .avatar {
-     width: 40px;
-     height: 40px;
+     width: 55px;
+     height: 55px;
      background: #ddd;
      border-radius: 50%;
      display: flex;
      align-items: center;
      justify-content: center;
-     margin-right: 12px;
+     margin-right: 15px;
      font-weight: bold;
+     font-size: 1.3rem;
  }
 
  #technique .user-info strong {
      display: block;
-     font-size: 15px;
+     font-size: 1.25rem;
      color: #1c1e21;
  }
 
  #technique .user-info span {
-     font-size: 13px;
+     font-size: 1rem;
      color: #65676b;
+     margin-top: 4px;
+     display: inline-block;
  }
 
  #technique .post-body p {
      color: #332a21;
-     font-size: 1rem;
+     font-size: 1.8rem;
      line-height: 1.8;
-     /* 增加行高，改善閱讀感 */
-     margin: 12px 0;
+     margin: 16px 0;
      font-family: sans-serif;
+     margin-bottom: 45px !important;
+ }
+
+ #technique .post-body p:last-child {
+     margin-bottom: 25px !important;
  }
 
  #technique .warning {
      color: #ff4757;
      font-weight: bold;
      display: block;
-     margin-bottom: 10px;
+     margin-bottom: 12px;
+     font-size: 1.35rem;
  }
 
- /* --- 3. 分析模式控制 (優化標籤間距) --- */
+ /* --- 5. 分析模式控制與標籤效果 --- */
  #technique .mark {
      position: relative;
      display: inline-block;
-     /* 關鍵：確保三角與標籤相對於文字區塊定位 */
      transition: background 0.3s;
-     line-height: 1.2;
-     /* 縮小行內高，避免干擾段落間距 */
+     line-height: 1.4;
      color: inherit;
  }
 
- /* 啟動分析時的螢光筆效果 */
  #technique .active-analysis .mark {
      background-color: rgba(255, 241, 118, 0.6);
      cursor: help;
  }
 
- /* 修正小標籤位置與間距 */
  #technique .active-analysis .mark::after {
      content: attr(data-tip);
      position: absolute;
-     /* 強制定位在文字底部下方 12px 處 */
-     top: calc(100% + 12px);
+     top: calc(100% + 14px);
      left: 50%;
      transform: translateX(-50%);
      background: #333;
      color: #fff;
-     font-size: 11px;
-     padding: 5px 10px;
-     border-radius: 4px;
+     font-size: 0.95rem;
+     padding: 8px 14px;
+     border-radius: 6px;
      white-space: nowrap;
      z-index: 100;
      pointer-events: none;
      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
      display: block !important;
-     /* 強制顯示 */
  }
 
- /* 小三角形箭頭 (選加，讓標籤更像對話框) */
  #technique .active-analysis .mark::before {
      content: "";
      position: absolute;
-     /* 強制定位在文字底部正下方 2px 處 */
-     top: calc(100% + 2px);
+     top: calc(100% + 4px);
      left: 50%;
      transform: translateX(-50%);
-     border: 5px solid transparent;
+     border: 6px solid transparent;
      border-bottom-color: #333;
-     /* 箭頭向上指 */
      z-index: 100;
      display: block !important;
-     /* 強制顯示 */
  }
 
- #technique .post-body p {
-     margin-bottom: 40px !important;
-     /* 增加下方間距給標籤預留位置 */
-     line-height: 1.8;
+ /* --- 6. 右側分類標示面板 (現在獨立了！) --- */
+ .summary-box {
+     background-color: #FFF8E1;
+     border: 2px solid #D4AF37;
+     border-radius: 12px;
+     padding: 20px;
+     /* ✅ 內距稍微縮小 */
+     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+     color: #3E2723;
  }
 
- /* 確保最後一行也有空間 */
- #technique .post-body p:last-child {
-     margin-bottom: 20px !important;
+ .summary-box h3 {
+     margin-top: 0;
+     font-size: 1.35rem;
+     /* ✅ 標題稍微縮小 */
+     color: #570505;
+     border-bottom: 2px dashed #A67B5B;
+     padding-bottom: 10px;
+     margin-bottom: 12px;
+     font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
  }
 
- #technique .mock-post-container p {
-     margin: 25px 0;
-     /* 稍微增加段落間的距離，給標籤留位置 */
-     line-height: 2;
+ .summary-box p {
+     font-size: 1rem;
+     /* ✅ 說明文字縮小 */
+     color: #6F4E37;
+     margin-bottom: 15px;
+     line-height: 1.5;
+     font-weight: bold;
  }
 
- /*以上為止*/
+ .summary-list {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+ }
+
+ .summary-list li {
+     background-color: #ffffff;
+     border-radius: 8px;
+     padding: 12px;
+     /* ✅ 縮小清單項目的內距 */
+     margin-bottom: 12px;
+     border-left: 5px solid #A67B5B;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+ }
+
+ .summary-title {
+     font-size: 1.1rem;
+     /* ✅ 分類標題縮小 */
+     font-weight: bold;
+     color: #3E2723;
+     margin-bottom: 6px;
+ }
+
+ .summary-desc {
+     font-size: 0.95rem;
+     /* ✅ 描述文字縮小 */
+     line-height: 1.5;
+     color: #555;
+ }
+
+ .summary-desc strong {
+     color: #E53935;
+ }
+
+ /* --- 7. RWD 響應式手機版適應 --- */
+ @media (max-width: 1100px) {
+     .technique-layout {
+         flex-direction: column;
+     }
+
+     .technique-sidebar {
+         width: 100%;
+         position: static;
+         margin-top: 20px;
+     }
+ }
