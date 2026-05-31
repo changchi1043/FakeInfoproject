@@ -794,7 +794,7 @@
  }
 
  .technique-sidebar {
-     width: 180px;
+     width: 170px;
      /* ✅ 從原本的 380px 縮小到 280px，把 100px 還給文章 */
      flex-shrink: 0;
      position: sticky;
@@ -802,105 +802,106 @@
  }
 
  /* --- 3. 手法清單區塊 --- */
- #technique .technique-list {
-     list-style: none;
-     padding: 0;
- }
+ /* --- 3. 手法清單區塊 (微調縮小版) --- */
+#technique .technique-list {
+    list-style: none;
+    padding: 0;
+}
 
- #technique .technique-list li {
-     padding: 18px 15px;
-     border-bottom: 1px solid #eee;
-     font-size: 1.7rem;
-     line-height: 1.6;
- }
+#technique .technique-list li {
+    padding: 14px 12px; /* 稍微縮小上下內距 */
+    border-bottom: 1px solid #eee;
+    font-size: 1.4rem;  /* ✅ 從 1.7rem 縮小到 1.4rem */
+    line-height: 1.6;
+}
 
- #technique .active-item {
-     background-color: #e8dfbf;
-     border-left: 5px solid #ff4757;
-     font-weight: bold;
- }
+#technique .active-item {
+    background-color: #e8dfbf;
+    border-left: 5px solid #ff4757;
+    font-weight: bold;
+}
 
- #technique .analyze-toggle {
-     margin-left: 15px;
-     padding: 8px 14px;
-     font-size: 1.05rem;
-     cursor: pointer;
-     background: #ff4757;
-     color: white;
-     border: none;
-     border-radius: 6px;
-     transition: 0.2s;
-     vertical-align: middle;
- }
+#technique .analyze-toggle {
+    margin-left: 15px;
+    padding: 6px 12px;  /* 稍微縮小按鈕內距 */
+    font-size: 0.9rem;  /* ✅ 從 1.0rem 縮小到 0.9rem */
+    cursor: pointer;
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    transition: 0.2s;
+    vertical-align: middle;
+}
 
- #technique .analyze-toggle:hover {
-     background: #e63946;
- }
+#technique .analyze-toggle:hover {
+    background: #e63946;
+}
 
- /* --- 4. 模擬貼文區塊 --- */
- #technique .mock-post-container {
-     box-sizing: border-box;
-     margin-top: 30px;
-     margin-bottom: 70px;
-     border: 1px solid #e0e0e0;
-     border-radius: 12px;
-     padding: 35px 30px;
-     background-color: #ffffff;
-     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
- }
+/* --- 4. 模擬貼文區塊 (微調縮小版) --- */
+#technique .mock-post-container {
+    box-sizing: border-box;
+    margin-top: 25px;
+    margin-bottom: 50px; /* ✅ 卡片下方間距從 70px 縮小到 50px */
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px 25px;  /* ✅ 卡片內部空間從 35px 縮小到 25px */
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
 
- #technique .post-header {
-     display: flex;
-     align-items: center;
-     margin-bottom: 20px;
- }
+#technique .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* 稍微縮小頭部與內文的距離 */
+}
 
- #technique .avatar {
-     width: 55px;
-     height: 55px;
-     background: #ddd;
-     border-radius: 50%;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     margin-right: 15px;
-     font-weight: bold;
-     font-size: 1.3rem;
- }
+#technique .avatar {
+    width: 45px;         /* ✅ 頭像從 55px 縮小到 45px */
+    height: 45px;
+    background: #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;  /* 稍微拉近頭像與名字的距離 */
+    font-weight: bold;
+    font-size: 1.1rem;   /* ✅ 頭像文字縮小 */
+}
 
- #technique .user-info strong {
-     display: block;
-     font-size: 1.25rem;
-     color: #1c1e21;
- }
+#technique .user-info strong {
+    display: block;
+    font-size: 1.0rem;   /* ✅ 原 0.8rem 有點太小，微調為 1.0rem 提升易讀性 */
+    color: #1c1e21;
+}
 
- #technique .user-info span {
-     font-size: 1rem;
-     color: #65676b;
-     margin-top: 4px;
-     display: inline-block;
- }
+#technique .user-info span {
+    font-size: 0.85rem;  /* ✅ 時間與狀態文字縮小 */
+    color: #65676b;
+    margin-top: 4px;
+    display: inline-block;
+}
 
- #technique .post-body p {
-     color: #332a21;
-     font-size: 1.8rem;
-     line-height: 1.8;
-     margin: 16px 0;
-     font-family: sans-serif;
-     margin-bottom: 45px !important;
- }
+#technique .post-body p {
+    color: #332a21;
+    font-size: 1.3rem;   /* ✅ 內文字體從超大的 1.8rem 縮小到 1.3rem */
+    line-height: 1.7;    /* 行高稍微收緊 */
+    margin: 12px 0;
+    font-family: sans-serif;
+    margin-bottom: 35px !important; /* ✅ 預留給標籤的下方空間縮小到 35px */
+}
 
- #technique .post-body p:last-child {
-     margin-bottom: 25px !important;
- }
+#technique .post-body p:last-child {
+    margin-bottom: 20px !important; /* 確保最後一行留白也縮小 */
+}
 
- #technique .warning {
-     color: #ff4757;
-     font-weight: bold;
-     display: block;
-     margin-bottom: 12px;
-     font-size: 1.35rem;
- }
+#technique .warning {
+    color: #ff4757;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.15rem;  /* ✅ 警告標語字體縮小 */
+}
 
  /* --- 5. 分析模式控制與標籤效果 --- */
  #technique .mark {
