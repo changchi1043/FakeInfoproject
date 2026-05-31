@@ -425,20 +425,23 @@
                 <!-- 右側：手法分類標示區 (Sidebar) -->
                 <div class="technique-sidebar">
                     <div class="summary-box">
-                        <h3>手法分類總結</h3>
+                        <h3>
+                            <span>手法分類</span>
+                            <a href="https://mlearn.moe.gov.tw/TopicArticle/PartData?key=11072" target="_blank" class="source-link-btn">點我去看資訊來源</a>
+                        </h3>
 
                         <ul class="summary-list">
-                            <li>
-                                <div class="summary-title">🛡️ 資訊造假與權威濫用</div>
-                                
+                            <li id="cat-farm">
+                                <div class="summary-title">👨‍🌾農場文現象</div>
                             </li>
-                            <li>
-                                <div class="summary-title">🔥 情緒操弄與洗腦</div>
-                                
+                            <li id="cat-media">
+                                <div class="summary-title">📺媒介效應</div>
                             </li>
-                            <li>
-                                <div class="summary-title">🎭 草根偽裝與輿論引導</div>
-                               
+                            <li id="cat-echo">
+                                <div class="summary-title">🎠同溫層極化效應</div>
+                            </li>
+                            <li id="cat-bandwagon">
+                                <div class="summary-title">❤從眾心理效應</div>
                             </li>
                         </ul>
                     </div>
@@ -451,26 +454,45 @@
 
         <!-- 關鍵修正：萬用 JavaScript 邏輯 -->
         <script>
-            /**
-             * 修正後的切換函數
-             * @param {string} targetId - 要控制的卡片 ID (例如 postCard1 或 postCard2)
-             * @param {HTMLElement} btn - 按鈕本身
-             */
             function toggleAnalysis(targetId, btn) {
-                // 1. 抓取指定的文章卡片
                 var postCard = document.getElementById(targetId);
 
                 if (postCard) {
-                    // 2. 切換該卡片的 active-analysis 類別
                     postCard.classList.toggle('active-analysis');
 
-                    // 3. 判斷狀態並更改該按鈕的文字與顏色
+                    // 1. 處理按鈕文字與顏色
                     if (postCard.classList.contains('active-analysis')) {
                         btn.innerHTML = "隱藏拆解";
                         btn.style.background = "#666";
                     } else {
                         btn.innerHTML = "查看手法拆解";
                         btn.style.background = "#ff4757";
+                    }
+
+                    // --- 以下為新增：處理右側分類的連動高亮 ---
+
+                    // 2. 先清除右側所有分類的浮出狀態 (歸零)
+                    document.querySelectorAll('.summary-list li').forEach(li => {
+                        li.classList.remove('highlight-category');
+                    });
+
+                    // 3. 定義文章與分類的配對關係
+                    const categoryMapping = {
+                        'postCard1': ['cat-media'],
+                        'postCard2': ['cat-media'],
+                        'postCard3': ['cat-echo', 'cat-bandwagon'],
+                        'postCard4': ['cat-media', 'cat-bandwagon'],
+                        'postCard5': ['cat-farm']
+                    };
+
+                    // 4. 如果目前是「展開」狀態，就把對應的分類加上浮出特效
+                    if (postCard.classList.contains('active-analysis') && categoryMapping[targetId]) {
+                        categoryMapping[targetId].forEach(catId => {
+                            let catElement = document.getElementById(catId);
+                            if (catElement) {
+                                catElement.classList.add('highlight-category'); // 加上 CSS 動畫類別
+                            }
+                        });
                     }
                 }
             }

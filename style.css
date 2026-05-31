@@ -744,43 +744,48 @@
 
  /* --- 1. 大外框與標題 (透明底，融入漸層背景) --- */
  #technique {
-    box-sizing: border-box;
-    width: 92vw; /* ✅ 直接使用視窗寬度 (viewport width) 的 92%，無視 800px 限制 */
-    max-width: 1300px; /* ✅ 設定展開的最大極限，看起來最舒服 */
-    
-    /* ✅ 突破外層容器限制的神奇魔法：強制相對於螢幕置中 */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    
-    margin-top: 40px;
-    margin-bottom: 40px;
-    text-align: left;
-}
+     box-sizing: border-box;
+     width: 92vw;
+     /* ✅ 直接使用視窗寬度 (viewport width) 的 92%，無視 800px 限制 */
+     max-width: 1300px;
+     /* ✅ 設定展開的最大極限，看起來最舒服 */
 
-#technique .content-title {
-    display: block;
-    width: fit-content;
-    margin: 0 auto 40px auto;
-    text-align: center;
-    color: #3E2723; /* 這是文字的顏色 */
-    border-bottom: 2px solid #3E2723; /* ✅ 新增這行：將底線改為深咖啡色 (也可以換成你想要的色碼) */
-}
+     /* ✅ 突破外層容器限制的神奇魔法：強制相對於螢幕置中 */
+     position: relative;
+     left: 50%;
+     transform: translateX(-50%);
 
-/* 分隔線 */
-#technique hr {
-    margin: 50px 0;
-    border: 0;
-    border-top: 1px solid #000000;
-}
+     margin-top: 40px;
+     margin-bottom: 40px;
+     text-align: left;
+ }
 
-/* --- 2. 雙欄佈局 (拉開距離並縮小空隙) --- */
-.technique-layout {
-    display: flex;
-    justify-content: space-between; /* 強制將左右兩塊推向兩端 */
-    gap: 70px;
-    align-items: flex-start;
-}
+ #technique .content-title {
+     display: block;
+     width: fit-content;
+     margin: 0 auto 40px auto;
+     text-align: center;
+     color: #ffffff;
+     /* 這是文字的顏色 */
+     border-bottom: 2px solid #ffffff;
+     /* ✅ 新增這行：將底線改為深咖啡色 (也可以換成你想要的色碼) */
+ }
+
+ /* 分隔線 */
+ #technique hr {
+     margin: 50px 0;
+     border: 0;
+     border-top: 1px solid #000000;
+ }
+
+ /* --- 2. 雙欄佈局 (拉開距離並縮小空隙) --- */
+ .technique-layout {
+     display: flex;
+     justify-content: space-between;
+     /* 強制將左右兩塊推向兩端 */
+     gap: 70px;
+     align-items: flex-start;
+ }
 
  /* ✅ 把白底、圓角和陰影移到左邊的主文章區塊 */
  .technique-main {
@@ -794,114 +799,131 @@
  }
 
  .technique-sidebar {
-     width: 170px;
+     width: 260px;
      /* ✅ 從原本的 380px 縮小到 280px，把 100px 還給文章 */
      flex-shrink: 0;
      position: sticky;
      top: 90px;
  }
 
- /* --- 3. 手法清單區塊 --- */
+
  /* --- 3. 手法清單區塊 (微調縮小版) --- */
-#technique .technique-list {
-    list-style: none;
-    padding: 0;
-}
+ #technique .technique-list {
+     list-style: none;
+     padding: 0;
+ }
 
-#technique .technique-list li {
-    padding: 14px 12px; /* 稍微縮小上下內距 */
-    border-bottom: 1px solid #eee;
-    font-size: 1.4rem;  /* ✅ 從 1.7rem 縮小到 1.4rem */
-    line-height: 1.6;
-}
+ #technique .technique-list li {
+     padding: 14px 12px;
+     /* 稍微縮小上下內距 */
+     border-bottom: 1px solid #eee;
+     font-size: 1.4rem;
+     /* ✅ 從 1.7rem 縮小到 1.4rem */
+     line-height: 1.6;
+ }
 
-#technique .active-item {
-    background-color: #e8dfbf;
-    border-left: 5px solid #ff4757;
-    font-weight: bold;
-}
+ #technique .active-item {
+     background-color: #e8dfbf;
+     border-left: 5px solid #ff4757;
+     font-weight: bold;
+ }
 
-#technique .analyze-toggle {
-    margin-left: 15px;
-    padding: 6px 12px;  /* 稍微縮小按鈕內距 */
-    font-size: 0.9rem;  /* ✅ 從 1.0rem 縮小到 0.9rem */
-    cursor: pointer;
-    background: #ff4757;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    transition: 0.2s;
-    vertical-align: middle;
-}
+ #technique .analyze-toggle {
+     margin-left: 15px;
+     padding: 6px 12px;
+     /* 稍微縮小按鈕內距 */
+     font-size: 0.9rem;
+     /* ✅ 從 1.0rem 縮小到 0.9rem */
+     cursor: pointer;
+     background: #ff4757;
+     color: white;
+     border: none;
+     border-radius: 6px;
+     transition: 0.2s;
+     vertical-align: middle;
+ }
 
-#technique .analyze-toggle:hover {
-    background: #e63946;
-}
+ #technique .analyze-toggle:hover {
+     background: #e63946;
+ }
 
-/* --- 4. 模擬貼文區塊 (微調縮小版) --- */
-#technique .mock-post-container {
-    box-sizing: border-box;
-    margin-top: 25px;
-    margin-bottom: 50px; /* ✅ 卡片下方間距從 70px 縮小到 50px */
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 25px 25px;  /* ✅ 卡片內部空間從 35px 縮小到 25px */
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-}
+ /* --- 4. 模擬貼文區塊 (微調縮小版) --- */
+ #technique .mock-post-container {
+     box-sizing: border-box;
+     margin-top: 25px;
+     margin-bottom: 50px;
+     /* ✅ 卡片下方間距從 70px 縮小到 50px */
+     border: 1px solid #e0e0e0;
+     border-radius: 12px;
+     padding: 25px 25px;
+     /* ✅ 卡片內部空間從 35px 縮小到 25px */
+     background-color: #ffffff;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+ }
 
-#technique .post-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px; /* 稍微縮小頭部與內文的距離 */
-}
+ #technique .post-header {
+     display: flex;
+     align-items: center;
+     margin-bottom: 15px;
+     /* 稍微縮小頭部與內文的距離 */
+ }
 
-#technique .avatar {
-    width: 45px;         /* ✅ 頭像從 55px 縮小到 45px */
-    height: 45px;
-    background: #ddd;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 12px;  /* 稍微拉近頭像與名字的距離 */
-    font-weight: bold;
-    font-size: 1.1rem;   /* ✅ 頭像文字縮小 */
-}
+ #technique .avatar {
+     width: 45px;
+     /* ✅ 頭像從 55px 縮小到 45px */
+     height: 45px;
+     background: #ddd;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-right: 12px;
+     /* 稍微拉近頭像與名字的距離 */
+     font-weight: bold;
+     font-size: 1.1rem;
+     /* ✅ 頭像文字縮小 */
+ }
 
-#technique .user-info strong {
-    display: block;
-    font-size: 1.0rem;   /* ✅ 原 0.8rem 有點太小，微調為 1.0rem 提升易讀性 */
-    color: #1c1e21;
-}
+ #technique .user-info strong {
+     display: block;
+     font-size: 1.0rem;
+     /* ✅ 原 0.8rem 有點太小，微調為 1.0rem 提升易讀性 */
+     color: #1c1e21;
+ }
 
-#technique .user-info span {
-    font-size: 0.85rem;  /* ✅ 時間與狀態文字縮小 */
-    color: #65676b;
-    margin-top: 4px;
-    display: inline-block;
-}
+ #technique .user-info span {
+     font-size: 0.85rem;
+     /* ✅ 時間與狀態文字縮小 */
+     color: #65676b;
+     margin-top: 4px;
+     display: inline-block;
+ }
 
-#technique .post-body p {
-    color: #332a21;
-    font-size: 1.3rem;   /* ✅ 內文字體從超大的 1.8rem 縮小到 1.3rem */
-    line-height: 1.7;    /* 行高稍微收緊 */
-    margin: 12px 0;
-    font-family: sans-serif;
-    margin-bottom: 35px !important; /* ✅ 預留給標籤的下方空間縮小到 35px */
-}
+ #technique .post-body p {
+     color: #332a21;
+     font-size: 1.3rem;
+     /* ✅ 內文字體從超大的 1.8rem 縮小到 1.3rem */
+     line-height: 1.7;
+     /* 行高稍微收緊 */
+     margin: 12px 0;
+     font-family: sans-serif;
+     margin-bottom: 35px !important;
+     /* ✅ 預留給標籤的下方空間縮小到 35px */
+ }
 
-#technique .post-body p:last-child {
-    margin-bottom: 20px !important; /* 確保最後一行留白也縮小 */
-}
+ #technique .post-body p:last-child {
+     margin-bottom: 20px !important;
+     /* 確保最後一行留白也縮小 */
+ }
 
-#technique .warning {
-    color: #ff4757;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1.15rem;  /* ✅ 警告標語字體縮小 */
-}
+ #technique .warning {
+     color: #ff4757;
+     font-weight: bold;
+     display: block;
+     margin-bottom: 10px;
+     font-size: 1.15rem;
+     /* ✅ 警告標語字體縮小 */
+ }
 
  /* --- 5. 分析模式控制與標籤效果 --- */
  #technique .mark {
@@ -959,14 +981,49 @@
  }
 
  .summary-box h3 {
+     display: flex;
+     /* ✅ 啟用彈性排版 */
+     justify-content: space-between;
+     /* ✅ 讓文字靠左，按鈕靠右 */
+     align-items: center;
+     /* ✅ 垂直置中對齊 */
+
      margin-top: 0;
      font-size: 1.35rem;
-     /* ✅ 標題稍微縮小 */
      color: #570505;
      border-bottom: 2px dashed #A67B5B;
      padding-bottom: 10px;
      margin-bottom: 12px;
      font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
+ }
+
+ /* --- 新增：原文連結按鈕樣式 --- */
+ .source-link-btn {
+     font-size: 0.85rem;
+     /* 按鈕文字稍微小一點才精緻 */
+     background-color: #A67B5B;
+     /* 使用主題拿鐵色 */
+     color: #FFF8E1;
+     /* 文字用奶油白 */
+     padding: 4px 10px;
+     border-radius: 6px;
+     text-decoration: none;
+     /* 去除超連結底線 */
+     font-family: "Microsoft JhengHei", sans-serif;
+     /* 按鈕建議用微軟正黑體比較清晰 */
+     font-weight: bold;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     transition: all 0.3s ease;
+ }
+
+ /* 滑鼠移過去的特效 */
+ .source-link-btn:hover {
+     background-color: #570505;
+     /* 變成深酒紅色 */
+     color: #ffffff;
+     transform: translateY(-2px);
+     /* 稍微往上浮起 */
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
  }
 
  .summary-box p {
@@ -984,22 +1041,43 @@
      margin: 0;
  }
 
+ /* 加上 transition 讓動畫順暢 */
  .summary-list li {
      background-color: #ffffff;
      border-radius: 8px;
      padding: 12px;
-     /* ✅ 縮小清單項目的內距 */
      margin-bottom: 12px;
      border-left: 5px solid #A67B5B;
      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+     /* 加入 Q 彈的轉場動畫 */
+     position: relative;
  }
 
  .summary-title {
      font-size: 1.1rem;
-     /* ✅ 分類標題縮小 */
      font-weight: bold;
      color: #3E2723;
      margin-bottom: 6px;
+     transition: color 0.3s;
+ }
+
+ /* --- 新增：當 JS 觸發時的連動浮出特效 --- */
+ .summary-list li.highlight-category {
+     background-color: #e8ce76;
+     /* 變成亮黃色背景 */
+     border-left: 6px solid #f82839;
+     /* 邊線變成警示紅 */
+     box-shadow: -5px 8px 15px rgba(255, 71, 87, 0.2);
+     /* 加上帶紅色的陰影 */
+     transform: translateX(-15px) scale(1.05);
+     /* 往左浮出，並稍微放大 */
+     z-index: 10;
+ }
+
+ /* 浮出時，文字顏色也跟著改變 */
+ .summary-list li.highlight-category .summary-title {
+     color: #000000;
  }
 
  .summary-desc {
