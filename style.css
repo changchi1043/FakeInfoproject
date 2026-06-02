@@ -182,12 +182,14 @@
      background-color: #D4AF37;
      color: #3E2723;
      border: none;
-     padding: 12px 25px;
-     font-size: 1.1rem;
+     padding: 15px 30px;
+     /* ✅ 稍微放大按鈕內距 */
+     font-size: 1.3rem;
+     /* ✅ 從 1.1rem 放大到 1.3rem */
      font-weight: bold;
      border-radius: 8px;
      cursor: pointer;
-     margin-top: 20px;
+     margin-top: 25px;
      transition: all 0.3s ease;
      display: block;
      margin-left: auto;
@@ -199,24 +201,26 @@
      transform: scale(1.05);
  }
 
-
  #quiz-game .progress-bar {
      text-align: center;
      font-weight: bold;
-     font-size: 1.1rem;
+     font-size: 2.2rem;
+     /* ✅ 從 2rem 放大到 2.2rem */
      color: #301602;
-     margin-bottom: 20px;
+     margin-bottom: 25px;
      font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
  }
 
  #quiz-game .post-card {
      background-color: #FFF8E1;
      color: #333;
-     padding: 25px;
+     padding: 30px;
+     /* ✅ 增加一點內距讓大字體有呼吸空間 */
      border-radius: 10px;
-     font-size: 1.2rem;
+     font-size: 2.2rem;
+     /* ✅ 主要題目文字：從 1.9rem 放大到 2.2rem */
      line-height: 1.8;
-     margin-bottom: 20px;
+     margin-bottom: 25px;
      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
      border-left: 6px solid #D4AF37;
      font-family: "DFKai-SB", "BiauKai", "標楷體", sans-serif;
@@ -227,10 +231,11 @@
      display: inline-block;
      background-color: #8D6E63;
      color: white;
-     padding: 4px 10px;
+     padding: 6px 14px;
      border-radius: 20px;
-     font-size: 1.2rem;
-     margin-bottom: 10px;
+     font-size: 1.4rem;
+     /* ✅ 從 1.2rem 放大到 1.4rem */
+     margin-bottom: 15px;
  }
 
  /* 風向文黃底高亮特效 */
@@ -238,7 +243,8 @@
      background-color: #FFD700;
      color: #111;
      font-weight: bold;
-     padding: 2px 6px;
+     padding: 4px 8px;
+     /* ✅ 稍微放大高亮的包覆空間 */
      border-radius: 4px;
      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
  }
@@ -246,14 +252,15 @@
  /* 解析說明區塊 */
  #quiz-game .explanation-box {
      display: none;
-     /* 解析預設隱藏 */
      background-color: rgba(255, 255, 255, 0.1);
      border: 1px dashed #D4AF37;
-     padding: 15px;
+     padding: 20px;
      border-radius: 8px;
-     margin-top: 15px;
+     margin-top: 20px;
      color: #F5F5DC;
-     line-height: 1.6;
+     font-size: 1.5rem;
+     /* ✅ 新增字體設定，讓解析說明也跟著變大 */
+     line-height: 1.7;
  }
 
 

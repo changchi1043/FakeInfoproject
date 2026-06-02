@@ -32,8 +32,8 @@
         <!-- 心理測驗簡介 -->
         <section id="quiz-intro">
             <h2>你，被帶風向了嗎⁉️</h2>
-            <p style="text-align: center; font-size: 1.2rem; line-height: 1.8;">
-                進入本網站之前,我們將為您準備 <strong>3 篇</strong>短文。<br>
+            <p style="text-align: center; font-size: 2rem; line-height: 1.8;">
+                進入本網站之前,我們將為您準備 <strong>2 篇</strong>短文。<br>
                 您需要在短時間內判斷該文章是否有<strong>「帶風向」</strong>之意圖。<br>
 
             <h4>準備好了嗎 讓我們開始吧💣</h4>
@@ -44,7 +44,7 @@
 
         <!-- 測驗題目區 -->
         <section id="quiz-game">
-            <div class="progress-bar">問題 <span id="current-q-num">1</span> / <span id="total-q-num">3</span></div>
+            <div class="progress-bar">問題 <span id="current-q-num">1</span> / <span id="total-q-num">2</span></div>
 
             <div class="post-card">
                 <span class="topic-badge" id="post-topic">主題標籤</span>
@@ -67,14 +67,14 @@
         <!-- 測驗結果頁 -->
         <section id="quiz-result">
             <h2 class="content-title">測驗結束</h2>
-            <p style="text-align: center; font-size: 1.2rem;">
-                恭喜您已經完成三題測驗💯<br>
+            <p style="text-align: center; font-size: 1.9rem;">
+                恭喜您已經完成兩題測驗💯<br>
                 是不是覺得風向文其實很難判斷呢?<br>
                 別擔心💖就讓我們帶您進入網站<br>
                 一起探索風向文這趟奇妙旅程吧!
             </p>
             <button class="btn" onclick="location.reload()">再測一次</button>
-            <button class="btn" onclick="showSection('intro-info')">前往介紹</button>
+            <button class="btn" onclick="showSection('ai-zone')">前往AI解答區</button>
         </section>
 
         <!--風向文介紹-->
@@ -207,247 +207,249 @@
         </section>
 
 
-        <!--常見手法 -->
 
         <!-- 常見手法 -->
+         <!-- 手法 1 -->
         <section id="technique">
             <h2 class="content-title">風向文常見手法</h2>
 
             <!-- 全新雙欄排版外層 -->
-            <div class="technique-layout">
+        <div class="technique-layout">
 
-                <!-- 左側：文章與手法清單區 -->
-                <div class="technique-main">
+            <!-- 左側：文章與手法清單區 -->
+            <div class="technique-main">
 
-                    <!-- 手法 1 -->
-                    <ul class="technique-list">
-                        <li class="active-item">
-                            1. 假訊息傳播：直接在社群散播刻意捏造資訊，快速擴散誤導輿論
-                            <button class="analyze-toggle" onclick="toggleAnalysis('postCard1', this)">查看手法拆解</button>
+
+                <ul class="technique-list">
+                    <li class="active-item">
+                        1. 名人追隨效應：藉由政治人物或名人背書，放大影響力觸發粉絲效應
+                        <button class="analyze-toggle" onclick="toggleAnalysis('postCard4', this)">查看手法拆解</button>
+                    </li>
+                </ul>
+
+                <div class="mock-post-container" id="postCard4">
+                    <div class="post-header">
+                        <div class="avatar">粉</div>
+                        <div class="user-info">
+                            <strong>鐵桿粉絲後援會 / 追星不落人後</strong>
+                            <span>10 分鐘前 · <i class="fas fa-star"></i> 熱門推薦</span>
+                        </div>
+                    </div>
+
+                    <div class="post-body">
+                        <p>
+                            <span class="mark" data-tip="[名人背書] 利用名人光環建立假性公信力">連我們最崇拜的「正義戰神」王大明委員都開口了！</span>
+                            他在剛剛的直播中直接點出，這次的法案根本就是要把台灣推向火坑！
+                        </p>
+
+                        <p>
+                            大明哥說的話什麼時候錯過？<span class="mark"
+                                data-tip="[粉絲效應] 強化「支持名人等於支持正義」的心理">他為了幫小老百姓發聲，擋了多少財團的財路，現在連他在演藝圈的朋友、甚至是金曲歌王都站出來力挺了！</span>
+                        </p>
+
+                        <p>
+                            <span class="mark" data-tip="[簡化議題] 將複雜問題簡化為對名人的忠誠度">這已經不是政策問題，而是「是非黑白」的問題！</span>
+                            你是要相信那些成天說謊的官員，還是要相信這群為了理想不惜被封殺的良心名人？
+                        </p>
+
+                        <p>
+                            <span class="mark" data-tip="[情緒綁架] 利用集體榮譽感驅使行動">身為大明哥的鐵粉，我們不能讓他孤軍奮戰！</span>
+                            當初他陪我們挺過這麼多風雨，現在換我們站出來撐他！
+                        </p>
+
+                        <p class="action-call">
+                            <span class="mark"
+                                data-tip="[擴散誘導] 藉由名譽共感強制要求轉傳">如果你也認同大明哥的熱血，請把這篇文轉發到你的所有群組！讓全世界看到我們粉絲的力量，不要讓正義的聲音被淹沒！</span><br><br>
+                            <strong>#戰神歸來 #守護台灣良心 #粉絲集結 #真相不容抹黑</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 手法 2 -->
+                <ul class="technique-list">
+                    <li class="active-item">
+                        2. 情緒煽動：使用聳動標題或恐懼語言，引發讀者本能反應而非理性思考
+                        <button class="analyze-toggle" onclick="toggleAnalysis('postCard2', this)">查看手法拆解</button>
+                    </li>
+                </ul>
+
+                <div class="mock-post-container" id="postCard2">
+                    <div class="post-header">
+                        <div class="avatar">驚</div>
+                        <div class="user-info">
+                            <strong>全台真相爆料網 / 守護家園大行動</strong>
+                            <span>1 小時前 · <i class="fas fa-globe-asia"></i> 強力擴散</span>
+                        </div>
+                    </div>
+                    <div class="post-body">
+                        <p class="warning">🚨【天理不容！台灣人集體陷入空前災難，再不醒來就全完了！】🚨</p>
+                        <p>大家還在睡嗎？<span class="mark" data-tip="[恐懼語言] 營造末日迫近感">大禍臨頭了！根據最新消息，一場針對全台灣人的「無聲謀殺」已經開始！</span>
+                        </p>
+                        <p><span class="mark" data-tip="[聳動標題] 利用生存本能製造焦慮">全台大規模「神祕毒素」外洩，政府卻下令封鎖新聞！</span></p>
+                        <p><span class="mark" data-tip="[恐懼語言] 激發極度的不安全感">這根本是現實版的滅絕計畫！讓你變成只會聽話的行屍走肉！</span> 😱😱😱
+                        </p>
+                        <p class="action-call">
+                            <span class="mark"
+                                data-tip="[情緒勒索] 綁架親情與責任感">如果你還有良知，就給我瘋狂轉發出去！現在不傳，你就是這場集體屠殺的幫兇！</span><br><br>
+                            <strong>#血債血償 #全台集體憤怒 #為了下一代拼了</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 手法 3 -->
+                <ul class="technique-list">
+                    <li class="active-item">
+                        3. 偽裝素人開題：網軍假扮一般網友發文，製造草根輿論假象
+                        <button class="analyze-toggle" onclick="toggleAnalysis('postCard3', this)">查看手法拆解</button>
+                    </li>
+                </ul>
+
+                <div class="mock-post-container" id="postCard3">
+                    <div class="post-header">
+                        <div class="avatar">粉</div>
+                        <div class="user-info">
+                            <strong>小粉愛生活 / 地方媽媽碎碎念</strong>
+                            <span>30 分鐘前 · <i class="fas fa-users"></i> 台北生活交流區</span>
+                        </div>
+                    </div>
+
+                    <div class="post-body">
+                        <p>
+                            <span class="mark"
+                                data-tip="[偽裝素人] 強調平凡身份以降低戒心">我只是一個每天忙著接小孩的普通媽媽，平常真的不太關心政治</span>，但這幾天發生的事情真的讓我看到心很累...
+                        </p>
+
+                        <p>
+                            剛剛去市場買菜，聽到旁邊幾位阿姨也在聊。大家不覺得最近那個「新政策」推得莫名其妙嗎？
+                            <span class="mark" data-tip="[引導] 營造「多數人都有同感」的假象">本來以為只有我覺得怪，沒想到連路人都在罵。</span>
+                        </p>
+
+                        <p>
+                            <span class="mark"
+                                data-tip="[訴諸感性] 將複雜政策簡化為生活委屈">我也不是要批評誰，但日子真的變難過了。以前幾百塊能買一週的菜，現在隨便買買就破千，這難道不是管理出了問題嗎？</span>
+                        </p>
+
+                        <p>
+                            <span class="mark" data-tip="[隱藏意圖] 以「中立」外衣包裝特定風向">我不是哪一黨的粉，我只在乎我的小孩以後有沒有競爭力。</span>
+                            現在看政府這樣花大錢在這種地方，身為家長真的會怕... 有人也跟我一樣，覺得這一切都很荒謬嗎？
+                        </p>
+
+                        <p class="action-call">
+                            <span class="mark"
+                                data-tip="[引導] 誘導群眾留言營造草根共鳴">純粹想抒發一下，沒有要戰。大家覺得呢？歡迎在下面分享，讓我知道我不孤單。</span><br><br>
+                            <strong>#庶民心聲 #不談政治談生活 #有人在聽嗎 #這就是我們要的未來嗎</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 手法 4 -->
+                <ul class="technique-list">
+                    <li class="active-item">
+                        4. 假訊息傳播：直接在社群散播刻意捏造資訊，快速擴散誤導輿論
+                        <button class="analyze-toggle" onclick="toggleAnalysis('postCard1', this)">查看手法拆解</button>
+                    </li>
+                </ul>
+
+                <div class="mock-post-container" id="postCard1">
+                    <div class="post-header">
+                        <div class="avatar">爆</div>
+                        <div class="user-info">
+                            <strong>匿名爆料公社 / 正義使者聯盟</strong>
+                            <span>2 小時前 · <i class="fas fa-globe-asia"></i> 公開轉傳</span>
+                        </div>
+                    </div>
+                    <div class="post-body">
+                        <p class="warning">🔥【全台灣人快看！再不看就來不及了！】🔥</p>
+                        <p>剛才接到<span class="mark"
+                                data-tip="[捏造] 虛構權威來源">在立法院上班的長輩冒死流出的公文</span>：政府明天就要正式啟動那個恐怖的「數位文字審核大數據」了！</p>
+                        <p><span class="mark" data-tip="[引導] 隱私焦慮">大家平常在 LINE 講電話、FB 語音聊天，現在通通會被監控！</span></p>
+                        <p class="action-call">
+                            <span class="mark" data-tip="[引導] 情緒勒索">現在不傳，以後你的帳號可能就被消失了！</span><br>
+                            <strong>#救救血汗錢 #真相只有一個</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- 分隔線 -->
+
+                <!-- 手法 5 -->
+                <ul class="technique-list">
+                    <li class="active-item">
+                        5. 訊息重複與簡化：大量重複模板內容，簡化複雜議題強化單一敘事
+                        <button class="analyze-toggle" onclick="toggleAnalysis('postCard5', this)">查看手法拆解</button>
+                    </li>
+                </ul>
+
+                <div class="mock-post-container" id="postCard5">
+                    <div class="post-header">
+                        <div class="avatar">傳</div>
+                        <div class="user-info">
+                            <strong>真相傳播站 / 每日新聞懶人包</strong>
+                            <span>5 分鐘前 · <i class="fas fa-sync-alt"></i> 熱門洗版中</span>
+                        </div>
+                    </div>
+
+                    <div class="post-body">
+                        <p class="warning">
+                            <span class="mark" data-tip="[簡化議題] 將複雜法案縮減為極端口號">【不簽法案 = 台灣滅亡，就是這麼簡單！】</span>
+                        </p>
+
+                        <p>
+                            大家不要被那些專家的長篇大論騙了！真相只有一句話：<span class="mark"
+                                data-tip="[訊息重複] 透過不斷複製貼上強化大腦迴路">「現在不簽，明天失業；現在不簽，明天失業！」</span>
+                        </p>
+
+                        <p>
+                            <span class="mark" data-tip="[單一敘事] 刻意忽略所有優缺點的權衡">支持這個法案，經濟就會好；反對這個法案，經濟就會垮。</span>
+                            沒有什麼好討論的空間，選錯了就是背叛下一代！
+                        </p>
+
+                        <p>
+                            <span class="mark" data-tip="[模板化] 容易被大量機器人帳號複製的語句">請記住這三點，這就是唯一的真相：
+                                <br>● 簽了才有錢
+                                <br>● 簽了才有錢
+                                <br>● 簽了才有錢！</span>
+                        </p>
+
+                        <p class="action-call">
+                            <span class="mark"
+                                data-tip="[強制擴散] 利用「洗腦循環」達成病毒式傳播">這句口號給我刷起來！在所有留言區複製這段話，直到大家都看見為止！只要我們說得夠多次，這就是事實！</span><br><br>
+                            <strong>#現在不簽明天失業 #唯一真相 #重要的事情說三遍 #簡單看懂台灣未來</strong>
+                        </p>
+                    </div>
+                </div>
+
+            </div> <!-- 左側結束 -->
+
+            <!-- 右側：手法分類標示區 (Sidebar) -->
+            <div class="technique-sidebar">
+                <div class="summary-box">
+                    <h3>
+                        <span>手法分類</span>
+                        <a href="https://mlearn.moe.gov.tw/TopicArticle/PartData?key=11072" target="_blank"
+                            class="source-link-btn">點我去看資訊來源</a>
+                    </h3>
+
+                    <ul class="summary-list">
+                        <li id="cat-farm">
+                            <div class="summary-title">👨‍🌾農場文現象</div>
+                        </li>
+                        <li id="cat-media">
+                            <div class="summary-title">📺媒介效應</div>
+                        </li>
+                        <li id="cat-echo">
+                            <div class="summary-title">🎠同溫層極化效應</div>
+                        </li>
+                        <li id="cat-bandwagon">
+                            <div class="summary-title">❤從眾心理效應</div>
                         </li>
                     </ul>
+                </div>
+            </div> <!-- 右側結束 -->
 
-                    <div class="mock-post-container" id="postCard1">
-                        <div class="post-header">
-                            <div class="avatar">爆</div>
-                            <div class="user-info">
-                                <strong>匿名爆料公社 / 正義使者聯盟</strong>
-                                <span>2 小時前 · <i class="fas fa-globe-asia"></i> 公開轉傳</span>
-                            </div>
-                        </div>
-                        <div class="post-body">
-                            <p class="warning">🔥【全台灣人快看！再不看就來不及了！】🔥</p>
-                            <p>剛才接到<span class="mark"
-                                    data-tip="[捏造] 虛構權威來源">在立法院上班的長輩冒死流出的公文</span>：政府明天就要正式啟動那個恐怖的「數位文字審核大數據」了！</p>
-                            <p><span class="mark" data-tip="[引導] 隱私焦慮">大家平常在 LINE 講電話、FB 語音聊天，現在通通會被監控！</span></p>
-                            <p class="action-call">
-                                <span class="mark" data-tip="[引導] 情緒勒索">現在不傳，以後你的帳號可能就被消失了！</span><br>
-                                <strong>#救救血汗錢 #真相只有一個</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <hr> <!-- 分隔線 -->
-
-                    <!-- 手法 2 -->
-                    <ul class="technique-list">
-                        <li class="active-item">
-                            2. 情緒煽動：使用聳動標題或恐懼語言，引發讀者本能反應而非理性思考
-                            <button class="analyze-toggle" onclick="toggleAnalysis('postCard2', this)">查看手法拆解</button>
-                        </li>
-                    </ul>
-
-                    <div class="mock-post-container" id="postCard2">
-                        <div class="post-header">
-                            <div class="avatar">驚</div>
-                            <div class="user-info">
-                                <strong>全台真相爆料網 / 守護家園大行動</strong>
-                                <span>1 小時前 · <i class="fas fa-globe-asia"></i> 強力擴散</span>
-                            </div>
-                        </div>
-                        <div class="post-body">
-                            <p class="warning">🚨【天理不容！台灣人集體陷入空前災難，再不醒來就全完了！】🚨</p>
-                            <p>大家還在睡嗎？<span class="mark"
-                                    data-tip="[恐懼語言] 營造末日迫近感">大禍臨頭了！根據最新消息，一場針對全台灣人的「無聲謀殺」已經開始！</span>
-                            </p>
-                            <p><span class="mark" data-tip="[聳動標題] 利用生存本能製造焦慮">全台大規模「神祕毒素」外洩，政府卻下令封鎖新聞！</span></p>
-                            <p><span class="mark" data-tip="[恐懼語言] 激發極度的不安全感">這根本是現實版的滅絕計畫！讓你變成只會聽話的行屍走肉！</span> 😱😱😱
-                            </p>
-                            <p class="action-call">
-                                <span class="mark"
-                                    data-tip="[情緒勒索] 綁架親情與責任感">如果你還有良知，就給我瘋狂轉發出去！現在不傳，你就是這場集體屠殺的幫兇！</span><br><br>
-                                <strong>#血債血償 #全台集體憤怒 #為了下一代拼了</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 手法 3 -->
-                    <ul class="technique-list">
-                        <li class="active-item">
-                            3. 偽裝素人開題：網軍假扮一般網友發文，製造草根輿論假象
-                            <button class="analyze-toggle" onclick="toggleAnalysis('postCard3', this)">查看手法拆解</button>
-                        </li>
-                    </ul>
-
-                    <div class="mock-post-container" id="postCard3">
-                        <div class="post-header">
-                            <div class="avatar">粉</div>
-                            <div class="user-info">
-                                <strong>小粉愛生活 / 地方媽媽碎碎念</strong>
-                                <span>30 分鐘前 · <i class="fas fa-users"></i> 台北生活交流區</span>
-                            </div>
-                        </div>
-
-                        <div class="post-body">
-                            <p>
-                                <span class="mark"
-                                    data-tip="[偽裝素人] 強調平凡身份以降低戒心">我只是一個每天忙著接小孩的普通媽媽，平常真的不太關心政治</span>，但這幾天發生的事情真的讓我看到心很累...
-                            </p>
-
-                            <p>
-                                剛剛去市場買菜，聽到旁邊幾位阿姨也在聊。大家不覺得最近那個「新政策」推得莫名其妙嗎？
-                                <span class="mark" data-tip="[引導] 營造「多數人都有同感」的假象">本來以為只有我覺得怪，沒想到連路人都在罵。</span>
-                            </p>
-
-                            <p>
-                                <span class="mark"
-                                    data-tip="[訴諸感性] 將複雜政策簡化為生活委屈">我也不是要批評誰，但日子真的變難過了。以前幾百塊能買一週的菜，現在隨便買買就破千，這難道不是管理出了問題嗎？</span>
-                            </p>
-
-                            <p>
-                                <span class="mark" data-tip="[隱藏意圖] 以「中立」外衣包裝特定風向">我不是哪一黨的粉，我只在乎我的小孩以後有沒有競爭力。</span>
-                                現在看政府這樣花大錢在這種地方，身為家長真的會怕... 有人也跟我一樣，覺得這一切都很荒謬嗎？
-                            </p>
-
-                            <p class="action-call">
-                                <span class="mark"
-                                    data-tip="[引導] 誘導群眾留言營造草根共鳴">純粹想抒發一下，沒有要戰。大家覺得呢？歡迎在下面分享，讓我知道我不孤單。</span><br><br>
-                                <strong>#庶民心聲 #不談政治談生活 #有人在聽嗎 #這就是我們要的未來嗎</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 手法 4 -->
-                    <ul class="technique-list">
-                        <li class="active-item">
-                            4. 名人追隨效應：借政治人物或名人背書，放大影響力觸發粉絲效應
-                            <button class="analyze-toggle" onclick="toggleAnalysis('postCard4', this)">查看手法拆解</button>
-                        </li>
-                    </ul>
-
-                    <div class="mock-post-container" id="postCard4">
-                        <div class="post-header">
-                            <div class="avatar">粉</div>
-                            <div class="user-info">
-                                <strong>鐵桿粉絲後援會 / 追星不落人後</strong>
-                                <span>10 分鐘前 · <i class="fas fa-star"></i> 熱門推薦</span>
-                            </div>
-                        </div>
-
-                        <div class="post-body">
-                            <p>
-                                <span class="mark" data-tip="[名人背書] 利用名人光環建立假性公信力">連我們最崇拜的「正義戰神」王大明委員都開口了！</span>
-                                他在剛剛的直播中直接點出，這次的法案根本就是要把台灣推向火坑！
-                            </p>
-
-                            <p>
-                                大明哥說的話什麼時候錯過？<span class="mark"
-                                    data-tip="[粉絲效應] 強化「支持名人等於支持正義」的心理">他為了幫小老百姓發聲，擋了多少財團的財路，現在連他在演藝圈的朋友、甚至是金曲歌王都站出來力挺了！</span>
-                            </p>
-
-                            <p>
-                                <span class="mark" data-tip="[簡化議題] 將複雜問題簡化為對名人的忠誠度">這已經不是政策問題，而是「是非黑白」的問題！</span>
-                                你是要相信那些成天說謊的官員，還是要相信這群為了理想不惜被封殺的良心名人？
-                            </p>
-
-                            <p>
-                                <span class="mark" data-tip="[情緒綁架] 利用集體榮譽感驅使行動">身為大明哥的鐵粉，我們不能讓他孤軍奮戰！</span>
-                                當初他陪我們挺過這麼多風雨，現在換我們站出來撐他！
-                            </p>
-
-                            <p class="action-call">
-                                <span class="mark"
-                                    data-tip="[擴散誘導] 藉由名譽共感強制要求轉傳">如果你也認同大明哥的熱血，請把這篇文轉發到你的所有群組！讓全世界看到我們粉絲的力量，不要讓正義的聲音被淹沒！</span><br><br>
-                                <strong>#戰神歸來 #守護台灣良心 #粉絲集結 #真相不容抹黑</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 手法 5 -->
-                    <ul class="technique-list">
-                        <li class="active-item">
-                            5. 訊息重複與簡化：大量重複模板內容，簡化複雜議題強化單一敘事
-                            <button class="analyze-toggle" onclick="toggleAnalysis('postCard5', this)">查看手法拆解</button>
-                        </li>
-                    </ul>
-
-                    <div class="mock-post-container" id="postCard5">
-                        <div class="post-header">
-                            <div class="avatar">傳</div>
-                            <div class="user-info">
-                                <strong>真相傳播站 / 每日新聞懶人包</strong>
-                                <span>5 分鐘前 · <i class="fas fa-sync-alt"></i> 熱門洗版中</span>
-                            </div>
-                        </div>
-
-                        <div class="post-body">
-                            <p class="warning">
-                                <span class="mark" data-tip="[簡化議題] 將複雜法案縮減為極端口號">【不簽法案 = 台灣滅亡，就是這麼簡單！】</span>
-                            </p>
-
-                            <p>
-                                大家不要被那些專家的長篇大論騙了！真相只有一句話：<span class="mark"
-                                    data-tip="[訊息重複] 透過不斷複製貼上強化大腦迴路">「現在不簽，明天失業；現在不簽，明天失業！」</span>
-                            </p>
-
-                            <p>
-                                <span class="mark" data-tip="[單一敘事] 刻意忽略所有優缺點的權衡">支持這個法案，經濟就會好；反對這個法案，經濟就會垮。</span>
-                                沒有什麼好討論的空間，選錯了就是背叛下一代！
-                            </p>
-
-                            <p>
-                                <span class="mark" data-tip="[模板化] 容易被大量機器人帳號複製的語句">請記住這三點，這就是唯一的真相：
-                                    <br>● 簽了才有錢
-                                    <br>● 簽了才有錢
-                                    <br>● 簽了才有錢！</span>
-                            </p>
-
-                            <p class="action-call">
-                                <span class="mark"
-                                    data-tip="[強制擴散] 利用「洗腦循環」達成病毒式傳播">這句口號給我刷起來！在所有留言區複製這段話，直到大家都看見為止！只要我們說得夠多次，這就是事實！</span><br><br>
-                                <strong>#現在不簽明天失業 #唯一真相 #重要的事情說三遍 #簡單看懂台灣未來</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                </div> <!-- 左側結束 -->
-
-                <!-- 右側：手法分類標示區 (Sidebar) -->
-                <div class="technique-sidebar">
-                    <div class="summary-box">
-                        <h3>
-                            <span>手法分類</span>
-                            <a href="https://mlearn.moe.gov.tw/TopicArticle/PartData?key=11072" target="_blank" class="source-link-btn">點我去看資訊來源</a>
-                        </h3>
-
-                        <ul class="summary-list">
-                            <li id="cat-farm">
-                                <div class="summary-title">👨‍🌾農場文現象</div>
-                            </li>
-                            <li id="cat-media">
-                                <div class="summary-title">📺媒介效應</div>
-                            </li>
-                            <li id="cat-echo">
-                                <div class="summary-title">🎠同溫層極化效應</div>
-                            </li>
-                            <li id="cat-bandwagon">
-                                <div class="summary-title">❤從眾心理效應</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div> <!-- 右側結束 -->
-
-            </div> <!-- 雙欄排版結束 -->
+        </div> <!-- 雙欄排版結束 -->
         </section>
 
 
@@ -623,12 +625,6 @@
                 highlighted: "現在年輕人是不是都流行<span class='highlight'>00後整頓市場</span>了？公司自從新聘員工之後，每個態度都像<span class='highlight'>爛草莓一樣</span>碰一下就跳起來，<span class='highlight'>各位評評理，下馬威才是真正的職場生態吧！</span>",
                 explanation: "這是一篇典型的「製造世代對立」風向文。刻意使用「00後整頓市場」、「爛草莓」等刻板印象與貶抑性標籤來攻擊特定族群。最後用「各位評評理」煽動網友情緒，並將不合理的「下馬威」包裝成理所當然的職場生態，意圖引發兩極化的爭吵以賺取流量。"
             },
-            {
-                topic: "醫療與健康資訊",
-                original: "內部醫師爆料！醫院開的感冒藥其實都有嚴重的副作用，會導致免疫力永久下降。千萬別再傻傻吃西藥了！中醫權威推薦這款『百草還原丹』，純天然無副作用，一天見效，趕快分享給身邊的親友救他們一命！",
-                highlighted: "<span class='highlight'>內部醫師爆料！</span>醫院開的感冒藥其實都有嚴重的副作用，會導致<span class='highlight'>免疫力永久下降</span>。<span class='highlight'>千萬別再傻傻吃西藥了！</span>中醫權威推薦這款『百草還原丹』，純天然無副作用，一天見效，<span class='highlight'>趕快分享給身邊的親友救他們一命！</span>",
-                explanation: "這是標準的健康恐嚇型農場文。利用「內部爆料、永久下降」製造恐慌，貶低常規醫療，藉機推銷特定產品。最後用「分享救人一命」進行情緒勒索，騙取大量轉發。"
-            }
         ];
 
         let currentQuestionIndex = 0;
